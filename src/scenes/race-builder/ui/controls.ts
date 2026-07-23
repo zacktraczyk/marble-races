@@ -4,7 +4,7 @@ import {
   createDefaultLeg,
   createDefaultParticipants,
   requiredLegCount,
-} from "../../../raceLibrary";
+} from "../../../races";
 import { createExitAnimator } from "../../../ui/exitAnimation";
 import { legCountLabel } from "../../format";
 import { wireLegListReorder } from "./dragReorder";

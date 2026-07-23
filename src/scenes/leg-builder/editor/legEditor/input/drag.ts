@@ -1,13 +1,13 @@
-import type { Vec2 } from "../../../engine/core/transform";
-import { snapDeltaToGrid, type GridLayout } from "../../../game/level/grid";
-import type { LevelObjectData } from "../../../game/level/document";
+import type { Vec2 } from "../../../../../engine/core/transform";
+import { snapDeltaToGrid, type GridLayout } from "../../../../../game/level/grid";
+import type { LevelObjectData } from "../../../../../game/level/document";
 import {
   applyLevelObjectShape,
   getLevelObjectBounds,
   getLevelObjectShape,
   setWallEndpoints,
   type LevelObjectShape,
-} from "../../../game/level/geometry";
+} from "../../../../../game/level/geometry";
 import {
   boundsFromPoints,
   boundsIntersect,
@@ -16,7 +16,7 @@ import {
   resizeShape,
   rotateShape,
 } from "../../geometry";
-import { oscillationPeriodForRange } from "../../../game/level/motion";
+import { oscillationPeriodForRange } from "../../../../../game/level/motion";
 import {
   DRAG_THRESHOLD,
   MIN_OBJECT_SIZE,

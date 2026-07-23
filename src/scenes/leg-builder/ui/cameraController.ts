@@ -7,7 +7,7 @@ import type { LevelObjectData } from "../../../game/level/document";
 import {
   getSelectionBounds,
   selectionCenter,
-} from "../../../editor/legEditor/selection";
+} from "../editor/legEditor/selection";
 import { calculateCameraFitForRect } from "../../../engine/camera/fit";
 
 const MIN_ZOOM = 0.1;

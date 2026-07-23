@@ -1,11 +1,11 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type { LevelObjectData } from "../../game/level/document";
+import type { Vec2 } from "../../../../engine/core/transform";
+import type { LevelObjectData } from "../../../../game/level/document";
 import {
   applyLevelObjectShape,
   getLevelObjectShape,
   getWallEndpoints,
   setWallEndpoints,
-} from "../../game/level/geometry";
+} from "../../../../game/level/geometry";
 import { moveShape } from "../geometry";
 import { SelectedTool } from "../tools";
 import type { EditorEnv } from "./env";

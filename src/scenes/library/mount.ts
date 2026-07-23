@@ -8,7 +8,7 @@ import {
   eraScheduleForRace,
   isRacePlayable,
   requiredLegCount,
-} from "../../raceLibrary";
+} from "../../races";
 import { renderRaceThumbnail } from "../../game/level/thumbnail";
 import { openConfirmDelete } from "../../ui/confirmDelete";
 import { createExitAnimator } from "../../ui/exitAnimation";

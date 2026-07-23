@@ -1,4 +1,4 @@
-import type { RaceLegDocument } from "../../../raceLibrary";
+import type { RaceLegDocument } from "../../../races";
 import type { RaceBuilderContext } from "./context";
 
 /**

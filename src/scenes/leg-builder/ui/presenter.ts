@@ -6,7 +6,7 @@ import { TEAM_COLORS, TEAM_NAMES } from "../../../game/race/teams";
 import { pusherSpeedForMotion } from "../../../game/level/objects";
 import type { RaceSnapshot } from "../../../game/race/controller";
 import type { RoundConfiguration } from "../../../game/race/types";
-import { SelectedTool } from "../../../editor/tools";
+import { SelectedTool } from "../editor/tools";
 import { wallMotionType } from "./wallMotion";
 import type { BuilderUi } from ".";
 

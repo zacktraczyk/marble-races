@@ -5,7 +5,7 @@ import {
   legAnalyticsProperties,
 } from "../../lib/analytics";
 import { createLegRoundConfiguration } from "../../game/race/legRound";
-import { RaceRepository, legScheduleInputs } from "../../raceLibrary";
+import { RaceRepository, legScheduleInputs } from "../../races";
 import { raceBuilderUrl } from "../urls";
 import { LegBuilderRuntime, type LegBuilderOptions } from "./runtime";
 

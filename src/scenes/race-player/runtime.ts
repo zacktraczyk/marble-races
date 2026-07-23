@@ -8,8 +8,8 @@ import {
   isRaceDocument,
   isRacePlayable,
   type RaceDocument,
-} from "../../raceLibrary/types";
-import { legScheduleInputs } from "../../raceLibrary/eraSchedule";
+} from "../../races/types";
+import { legScheduleInputs } from "../../races/eraSchedule";
 import {
   MAX_MARBLE_RADIUS,
   MIN_MARBLE_RADIUS,

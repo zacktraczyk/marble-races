@@ -3,13 +3,13 @@ import type {
   SpawnPointVariant,
 } from "../../../game/level/document";
 import type { PusherSpeed } from "../../../game/level/objects";
-import { isPusherTool, SelectedTool } from "../../../editor/tools";
+import { isPusherTool, SelectedTool } from "../editor/tools";
 import type { BuilderUi } from ".";
 import type { Vec2 } from "../../../engine/core/transform";
 import type {
   EditorContextAction,
   EditorContextState,
-} from "../../../editor/legEditor";
+} from "../editor/legEditor";
 
 export type BuilderControlActions = {
   selectTool(tool: SelectedTool): void;

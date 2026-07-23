@@ -1,5 +1,5 @@
 import type { Scene } from "../../engine/runtime/scene";
-import type { RaceDocument } from "../../raceLibrary/types";
+import type { RaceDocument } from "../../races/types";
 import { RacePlayerRuntime, type RacePlayerOptions } from "./runtime";
 
 export type { RacePlayerOptions } from "./runtime";

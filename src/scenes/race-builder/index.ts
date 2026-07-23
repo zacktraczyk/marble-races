@@ -9,7 +9,7 @@ import {
   isRacePlayable,
   RaceRepository,
   type RaceDocument,
-} from "../../raceLibrary";
+} from "../../races";
 import { createRaceBuilderAnalytics } from "./analytics";
 import { bindRaceBuilderControls } from "./ui/controls";
 import type { RaceBuilderContext } from "./ui/context";

@@ -1,6 +1,6 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type { LevelObjectData } from "../../game/level/document";
-import type { GridLayout } from "../../game/level/grid";
+import type { Vec2 } from "../../../../engine/core/transform";
+import type { LevelObjectData } from "../../../../game/level/document";
+import type { GridLayout } from "../../../../game/level/grid";
 import type { PusherTool, SelectedTool } from "../tools";
 import type { DragDepsBase, LegEditorKeyboard } from "./input";
 import type { HandleTestDeps, SnapDeps } from "./hitTest";

@@ -1,5 +1,5 @@
-import type { Vec2 } from "../../../engine/core/transform";
-import { getWallEndpoints } from "../../../game/level/geometry";
+import type { Vec2 } from "../../../../../engine/core/transform";
+import { getWallEndpoints } from "../../../../../game/level/geometry";
 import {
   pickLevelObject,
   pickTolerance,

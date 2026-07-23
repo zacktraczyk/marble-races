@@ -1,6 +1,6 @@
 import type { Vec2 } from "../../engine/core/transform";
-import { EditorOverlay, LegEditorController } from "../../editor/legEditor";
-import { LegHistory } from "../../editor/legHistory";
+import { EditorOverlay, LegEditorController } from "./editor/legEditor";
+import { LegHistory } from "./editor/legHistory";
 import type {
   LevelObjectData,
   NewLevelObjectData,
@@ -31,7 +31,7 @@ import {
   pusherKindFromTool,
   type PusherTool,
   SelectedTool,
-} from "../../editor/tools";
+} from "./editor/tools";
 import { RaceController } from "../../game/race/controller";
 import { LegCourseSync } from "./courseSync";
 import { BuilderCameraController } from "./ui/cameraController";

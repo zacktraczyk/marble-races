@@ -19,7 +19,7 @@ storage.
 | -------------- | ------------------------------------------------------------------------------------ |
 | **level**      | Serialized course geometry (`SerializedLevel` / `AuthoredLevel`) under `game/level/` |
 | **leg**        | One race stage that wraps a level document                                           |
-| **leg editor** | Interactive course editor (`editor/legEditor`) used by the leg builder               |
+| **leg editor** | Interactive course editor (`scenes/leg-builder/editor`) used by the leg builder      |
 | **VDU**        | Visual Display Unit — the WebGL renderer under `src/engine/vdu`                      |
 
 ## Features
@@ -141,12 +141,12 @@ timing, cross-build comparison, and result interpretation.
 
 Product code lives under `src/` with intended dependency direction:
 
-`pages` → `scenes` → `game` / `editor` / `raceLibrary` → `engine`
+`pages` → `scenes` → `races` → `game` → `engine`
 
 Shared level documents, geometry, motion, constants, grid helpers, and race
-simulation (`RaceController`) live in `game/`. Interactive editing
-(`legEditor`, undo history, tools) lives in `editor/`. Saved-race documents and
-browser persistence live in `raceLibrary/`.
+simulation (`RaceController`) live in `game/`. Saved-race documents and browser
+persistence live in `races/`. Interactive editing (`legEditor`, undo history,
+tools) lives under `scenes/leg-builder/editor/`.
 
 Engine prototypes and legacy race demos live in `debug/` with Astro routes
 under `/dev/*`, separate from product `scenes/`.

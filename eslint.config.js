@@ -5,7 +5,8 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 /**
- * Layer boundaries (pages → scenes|debug|ui → game|editor|raceLibrary → engine).
+ * Layer boundaries (pages → scenes|debug|ui → races → game → engine).
+ * Leg editing lives under scenes/leg-builder/editor and may only import game/engine.
  * Patterns match import paths as written (including relative ../../game/...).
  */
 const deny = (groups, message) => ({
@@ -44,74 +45,63 @@ export default [
     rules: deny(
       [
         "**/game/**",
-        "**/editor/**",
-        "**/raceLibrary/**",
+        "**/races/**",
         "**/scenes/**",
         "**/debug/**",
         "**/pages/**",
         "**/ui/**",
       ],
-      "engine is a leaf layer and must not import from game/editor/raceLibrary/scenes/debug/pages/ui"
+      "engine is a leaf layer and must not import from game/races/scenes/debug/pages/ui"
     ),
   },
   {
     files: ["src/game/**/*.{ts,js}"],
     rules: deny(
       [
-        "**/editor/**",
-        "**/raceLibrary/**",
+        "**/races/**",
         "**/scenes/**",
         "**/debug/**",
         "**/pages/**",
         "**/ui/**",
       ],
-      "game may only import engine (not editor/raceLibrary/scenes/debug/pages/ui)"
+      "game may only import engine (not races/scenes/debug/pages/ui)"
     ),
   },
   {
-    files: ["src/editor/**/*.{ts,js}"],
+    files: ["src/races/**/*.{ts,js}"],
     rules: deny(
-      [
-        "**/raceLibrary/**",
-        "**/scenes/**",
-        "**/debug/**",
-        "**/pages/**",
-        "**/ui/**",
-      ],
-      "editor may only import game and engine (not raceLibrary/scenes/debug/pages/ui)"
+      ["**/scenes/**", "**/debug/**", "**/pages/**", "**/ui/**"],
+      "races may only import game and engine (not scenes/debug/pages/ui)"
     ),
   },
   {
-    files: ["src/raceLibrary/**/*.{ts,js}"],
+    files: ["src/scenes/leg-builder/editor/**/*.{ts,js}"],
     rules: deny(
       [
-        "**/editor/**",
-        "**/scenes/**",
+        "**/races/**",
         "**/debug/**",
         "**/pages/**",
         "**/ui/**",
+        "**/library/**",
+        "**/race-builder/**",
+        "**/race-player/**",
       ],
-      "raceLibrary may only import game and engine (not editor/scenes/debug/pages/ui)"
+      "leg-builder editor may only import game and engine (not races/ui/other scenes)"
     ),
   },
   {
     files: ["src/debug/**/*.{ts,js}"],
     rules: deny(
-      [
-        "**/scenes/**",
-        "**/editor/**",
-        "**/raceLibrary/**",
-        "**/pages/**",
-        "**/ui/**",
-      ],
-      "debug demos may import game/engine only (not product scenes/editor/raceLibrary/pages/ui)"
+      ["**/scenes/**", "**/races/**", "**/pages/**", "**/ui/**"],
+      "debug demos may import game/engine only (not product scenes/races/pages/ui)"
     ),
   },
   {
     files: ["src/scenes/**/*.{ts,js}"],
+    ignores: ["src/scenes/leg-builder/editor/**/*.{ts,js}"],
     rules: deny(
       ["**/pages/**", "**/debug/**"],
-      "scenes may import game/editor/raceLibrary/engine/ui (not pages or debug)"
+      "scenes may import game/races/engine/ui (not pages or debug)"
     ),
   },
   {
@@ -120,8 +110,8 @@ export default [
     // read game constants for form defaults. Route shells stay thin.
     ignores: ["src/pages/**/_*.astro"],
     rules: deny(
-      ["**/game/**", "**/editor/**", "**/engine/**", "**/raceLibrary/**"],
-      "pages should mount via scenes/debug/ui only (not game/editor/engine/raceLibrary)"
+      ["**/game/**", "**/engine/**", "**/races/**"],
+      "pages should mount via scenes/debug/ui only (not game/engine/races)"
     ),
   },
   {
@@ -129,9 +119,8 @@ export default [
     rules: deny(
       [
         "**/game/**",
-        "**/editor/**",
         "**/engine/**",
-        "**/raceLibrary/**",
+        "**/races/**",
         "**/scenes/**",
       ],
       "dev pages should use debug/ + ui only"

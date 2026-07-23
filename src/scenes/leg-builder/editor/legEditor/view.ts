@@ -1,11 +1,11 @@
-import type Stage from "../../engine/stage";
-import type { LevelObjectData } from "../../game/level/document";
+import type Stage from "../../../../engine/stage";
+import type { LevelObjectData } from "../../../../game/level/document";
 import {
   getLevelObjectMotionPose,
   getOscillationEndpoints,
   getRotationPivot,
   getSliderSpeed,
-} from "../../game/level/motion";
+} from "../../../../game/level/motion";
 import {
   getLevelObjectShape,
   getRectangleCorners,
@@ -14,7 +14,7 @@ import {
   isLevelObjectResizable,
   type LevelObjectShape,
   type RectangleLevelShape,
-} from "../../game/level/geometry";
+} from "../../../../game/level/geometry";
 import { getRotationHandle, getResizeAnchors } from "../geometry";
 import { getSelectionBounds } from "./selection";
 import type {

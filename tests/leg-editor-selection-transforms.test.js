@@ -4,7 +4,7 @@ import {
   distributeLevelObjects,
   getSelectionBounds,
   mirrorLevelObjects,
-} from "../src/editor/legEditor/selection.ts";
+} from "../src/scenes/leg-builder/editor/legEditor/selection.ts";
 
 const wall = (id, start, end, motion) => ({
   id,

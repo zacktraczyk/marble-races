@@ -2,12 +2,12 @@ import { describe, expect, test } from "bun:test";
 import {
   createDefaultLeg,
   createDefaultRace,
-} from "../src/raceLibrary/defaults.ts";
+} from "../src/races/defaults.ts";
 import {
   parseRaceLibrary,
   RaceRepository,
-} from "../src/raceLibrary/repository.ts";
-import { isRacePlayable } from "../src/raceLibrary/types.ts";
+} from "../src/races/repository.ts";
+import { isRacePlayable } from "../src/races/types.ts";
 
 class MemoryStorage {
   values = new Map();

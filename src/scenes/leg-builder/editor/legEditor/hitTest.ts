@@ -1,13 +1,13 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type { LevelObjectData } from "../../game/level/document";
+import type { Vec2 } from "../../../../engine/core/transform";
+import type { LevelObjectData } from "../../../../game/level/document";
 import {
   getLevelObjectShape,
   getWallEndpoints,
   isLevelObjectRotatable,
   isLevelObjectResizable,
-} from "../../game/level/geometry";
-import { snapPointToGrid, type GridLayout } from "../../game/level/grid";
-import { getOscillationEndpoints } from "../../game/level/motion";
+} from "../../../../game/level/geometry";
+import { snapPointToGrid, type GridLayout } from "../../../../game/level/grid";
+import { getOscillationEndpoints } from "../../../../game/level/motion";
 import {
   findNearestPointIndex,
   getRotationHandle,

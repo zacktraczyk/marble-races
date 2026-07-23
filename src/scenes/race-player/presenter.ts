@@ -1,4 +1,4 @@
-import type { RaceDocument } from "../../raceLibrary/types";
+import type { RaceDocument } from "../../races/types";
 
 export type UpdateControlsArgs = {
   pauseButtons: readonly HTMLButtonElement[];

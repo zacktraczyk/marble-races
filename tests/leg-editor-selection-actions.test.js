@@ -1,11 +1,11 @@
 import { describe, expect, test } from "bun:test";
 import { createGridLayout } from "../src/game/level/grid.ts";
-import { LegEditorSelection } from "../src/editor/legEditor/selection.ts";
+import { LegEditorSelection } from "../src/scenes/leg-builder/editor/legEditor/selection.ts";
 import {
   copySelectedObjects,
   duplicateSelectedObjects,
   pasteClipboardObjects,
-} from "../src/editor/legEditor/selectionActions.ts";
+} from "../src/scenes/leg-builder/editor/legEditor/selectionActions.ts";
 
 const wall = (id, start = [0, 0], end = [60, 0]) => ({
   id,

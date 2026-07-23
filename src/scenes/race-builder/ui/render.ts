@@ -7,7 +7,7 @@ import {
   isRacePlayable,
   requiredLegCount,
   type RaceLegDocument,
-} from "../../../raceLibrary";
+} from "../../../races";
 import { renderLevelThumbnail } from "../../../game/level/thumbnail";
 import { openConfirmDelete } from "../../../ui/confirmDelete";
 import { legCountLabel } from "../../format";

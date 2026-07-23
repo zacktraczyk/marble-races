@@ -2,7 +2,7 @@ import {
   RaceRepository,
   isRacePlayable,
   type RaceDocument,
-} from "../../raceLibrary";
+} from "../../races";
 import {
   captureEvent,
   EVENTS,

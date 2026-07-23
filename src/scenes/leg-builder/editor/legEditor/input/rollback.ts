@@ -1,8 +1,8 @@
-import type { LevelObjectData } from "../../../game/level/document";
+import type { LevelObjectData } from "../../../../../game/level/document";
 import {
   applyLevelObjectShape,
   setWallEndpoints,
-} from "../../../game/level/geometry";
+} from "../../../../../game/level/geometry";
 import { findLevelObject, type EditorEnv } from "../env";
 import type { EditorGesture } from "../gestures";
 import { updateCursor } from "./idleCursor";

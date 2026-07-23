@@ -1,8 +1,8 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type Stage from "../../engine/stage";
-import type { GridLayout } from "../../game/level/grid";
+import type { Vec2 } from "../../../../engine/core/transform";
+import type Stage from "../../../../engine/stage";
+import type { GridLayout } from "../../../../game/level/grid";
 import { isPusherTool, SelectedTool } from "../tools";
-import type { LevelObjectData } from "../../game/level/document";
+import type { LevelObjectData } from "../../../../game/level/document";
 import type {
   PusherPlacementPreview,
   SelectionMarquee,
@@ -49,7 +49,7 @@ import {
 import {
   applyLevelObjectShape,
   type LevelObjectShape,
-} from "../../game/level/geometry";
+} from "../../../../game/level/geometry";
 import { pickLevelObject, pickTolerance } from "../geometry";
 import type {
   SelectionAlignment,

@@ -1,13 +1,13 @@
 import { describe, expect, test } from "bun:test";
 import { getLevelObjectShape } from "../src/game/level/geometry.ts";
-import { getRotationHandle } from "../src/editor/geometry.ts";
-import { ROTATION_HANDLE_OFFSET } from "../src/editor/legEditor/constants.ts";
+import { getRotationHandle } from "../src/scenes/leg-builder/editor/geometry.ts";
+import { ROTATION_HANDLE_OFFSET } from "../src/scenes/leg-builder/editor/legEditor/constants.ts";
 import {
   endpointAt,
   findWallEndpointTarget,
   resizeHandleAt,
   rotationHandleAt,
-} from "../src/editor/legEditor/hitTest.ts";
+} from "../src/scenes/leg-builder/editor/legEditor/hitTest.ts";
 
 const wall = (overrides = {}) => ({
   id: "wall",

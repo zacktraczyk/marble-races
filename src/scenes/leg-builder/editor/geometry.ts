@@ -1,12 +1,12 @@
-import type { Vec2 } from "../engine/core/transform";
-import type { LevelObjectData } from "../game/level/document";
+import type { Vec2 } from "../../../engine/core/transform";
+import type { LevelObjectData } from "../../../game/level/document";
 import {
   hitTestLevelObject,
   localToWorld,
   worldToLocal,
   type Bounds,
   type LevelObjectShape,
-} from "../game/level/geometry";
+} from "../../../game/level/geometry";
 
 export type ResizeHandle = "nw" | "n" | "ne" | "e" | "se" | "s" | "sw" | "w";
 
