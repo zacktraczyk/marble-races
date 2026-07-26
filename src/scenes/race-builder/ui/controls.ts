@@ -1,10 +1,9 @@
 import {
-  MARBLES_PER_TEAM_OPTIONS,
   MAX_RACE_PARTICIPANTS,
   createDefaultLeg,
   createDefaultParticipants,
-  requiredLegCount,
-} from "@races";
+} from "@races/defaults";
+import { MARBLES_PER_TEAM_OPTIONS, requiredLegCount } from "@races/types";
 import { createExitAnimator } from "@ui/exitAnimation";
 import { legCountLabel } from "../../format";
 import { wireLegListReorder } from "./dragReorder";

@@ -1,4 +1,5 @@
-import { RaceRepository, isRacePlayable, type RaceDocument } from "@races";
+import { RaceRepository } from "@races/repository";
+import { isRacePlayable, type RaceDocument } from "@races/types";
 import { EVENTS, raceAnalyticsProperties } from "@lib/analytics/events";
 import { captureEvent, reportOperationFailure } from "@lib/analytics/capture";
 import { mountScene } from "../mount";

@@ -1,13 +1,12 @@
 import type { LegFinishPlan } from "@game/race/eraSchedule";
+import { MAX_RACE_PARTICIPANTS, createLocalId } from "@races/defaults";
+import { eraScheduleForRace } from "@races/schedule";
 import {
   MARBLES_PER_TEAM_OPTIONS,
-  MAX_RACE_PARTICIPANTS,
-  createLocalId,
-  eraScheduleForRace,
   isRacePlayable,
   requiredLegCount,
   type RaceLegDocument,
-} from "@races";
+} from "@races/types";
 import { renderLevelThumbnail } from "@game/level/thumbnail";
 import { openConfirmDelete } from "@ui/confirmDelete";
 import { legCountLabel } from "../../format";

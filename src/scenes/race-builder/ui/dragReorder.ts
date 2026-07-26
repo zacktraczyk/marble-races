@@ -1,4 +1,4 @@
-import type { RaceLegDocument } from "@races";
+import type { RaceLegDocument } from "@races/types";
 import type { RaceBuilderContext } from "./context";
 
 /**

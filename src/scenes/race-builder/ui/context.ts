@@ -1,4 +1,5 @@
-import type { RaceRepository, RaceDocument } from "@races";
+import type { RaceRepository } from "@races/repository";
+import type { RaceDocument } from "@races/types";
 import type { RaceBuilderEvent } from "../events";
 import type { RaceBuilderUi } from "./elements";
 

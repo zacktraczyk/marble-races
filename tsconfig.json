@@ -7,7 +7,6 @@
     "paths": {
       "@engine/*": ["src/engine/*"],
       "@game/*": ["src/game/*"],
-      "@races": ["src/races/index.ts"],
       "@races/*": ["src/races/*"],
       "@scenes/*": ["src/scenes/*"],
       "@debug/*": ["src/debug/*"],

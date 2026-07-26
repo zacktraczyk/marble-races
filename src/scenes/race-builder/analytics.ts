@@ -4,7 +4,7 @@ import {
   raceAnalyticsProperties,
 } from "@lib/analytics/events";
 import { captureEvent } from "@lib/analytics/capture";
-import { isRacePlayable, type RaceDocument } from "@races";
+import { isRacePlayable, type RaceDocument } from "@races/types";
 import type { RaceBuilderEvent } from "./events";
 
 type RaceBuilderAnalyticsOptions = {

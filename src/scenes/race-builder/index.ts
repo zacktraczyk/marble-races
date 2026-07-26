@@ -6,7 +6,8 @@ import {
   wasRaceSetupCompleted,
 } from "@lib/analytics/setupCompletion";
 import { attachTooltip } from "@ui/tooltip";
-import { isRacePlayable, RaceRepository, type RaceDocument } from "@races";
+import { RaceRepository } from "@races/repository";
+import { isRacePlayable, type RaceDocument } from "@races/types";
 import { createRaceBuilderAnalytics } from "./analytics";
 import { bindRaceBuilderControls } from "./ui/controls";
 import type { RaceBuilderContext } from "./ui/context";

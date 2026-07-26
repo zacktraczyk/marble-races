@@ -1,14 +1,16 @@
 import {
   DEFAULT_MARBLES_PER_TEAM,
   DEFAULT_PARTICIPANT_COUNT,
-  MARBLES_PER_TEAM_OPTIONS,
   MAX_RACE_PARTICIPANTS,
-  RaceRepository,
   createDefaultRace,
-  eraScheduleForRace,
+} from "@races/defaults";
+import { RaceRepository } from "@races/repository";
+import { eraScheduleForRace } from "@races/schedule";
+import {
+  MARBLES_PER_TEAM_OPTIONS,
   isRacePlayable,
   requiredLegCount,
-} from "@races";
+} from "@races/types";
 import { renderRaceThumbnail } from "@game/level/thumbnail";
 import { openConfirmDelete } from "@ui/confirmDelete";
 import { createExitAnimator } from "@ui/exitAnimation";

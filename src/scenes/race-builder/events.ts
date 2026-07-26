@@ -1,4 +1,4 @@
-import type { RaceDocument } from "@races";
+import type { RaceDocument } from "@races/types";
 
 /** Product events emitted by race-builder mutations after persistence succeeds. */
 export type RaceBuilderEvent =

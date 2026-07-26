@@ -2,7 +2,8 @@ import type { Scene, SceneContext } from "@engine/runtime/scene";
 import { EVENTS, legAnalyticsProperties } from "@lib/analytics/events";
 import { captureEvent } from "@lib/analytics/capture";
 import { createLegRoundConfiguration } from "@game/race/legRound";
-import { RaceRepository, legScheduleInputs } from "@races";
+import { RaceRepository } from "@races/repository";
+import { legScheduleInputs } from "@races/schedule";
 import { raceBuilderUrl } from "../urls";
 import { LegBuilderRuntime, type LegBuilderOptions } from "./runtime";
 
