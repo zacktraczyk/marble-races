@@ -1,9 +1,21 @@
 import { Camera2D } from "../camera/camera2d";
-import type { EntityDefinition } from "../core/definition";
 import { Entity, type EntityId } from "../core/entity";
-import { World } from "../core/world";
+import { World, type EntityCoreDefinition } from "../core/world";
+import type { PhysicsComponentDefinition } from "../physics/component";
 import Physics, { type CollisionEvents } from "../physics/physics";
+import type { RenderComponentDefinition } from "../vdu/component";
 import { VDU } from "../vdu/vdu";
+
+/**
+ * Everything needed to spawn one entity: neutral core data plus the optional
+ * per-subsystem components. Composed here rather than in `core/` so that `core`
+ * stays unaware of physics and rendering — the stage is the only place that
+ * knows all three exist.
+ */
+export interface EntityDefinition extends EntityCoreDefinition {
+  physics?: PhysicsComponentDefinition;
+  render?: RenderComponentDefinition;
+}
 
 export class Stage {
   private readonly _vdu: VDU;

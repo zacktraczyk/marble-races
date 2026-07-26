@@ -1,4 +1,4 @@
-import type { EntityDefinition } from "@engine/core/definition";
+import type { EntityDefinition } from "@engine/stage";
 import type { Vec2 } from "@engine/core/transform";
 import type { Color } from "@engine/core/color";
 import {

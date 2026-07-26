@@ -1,4 +1,4 @@
-import type { EntityDefinition } from "@engine/core/definition";
+import type { EntityDefinition } from "@engine/stage";
 import type { LevelObjectData } from "../level/document";
 import { getLevelObjectShape } from "../level/geometry";
 import { finishRackDefinitions } from "./finishZone";
