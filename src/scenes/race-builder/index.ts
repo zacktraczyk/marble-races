@@ -1,5 +1,6 @@
 import type { Scene } from "@engine/runtime/scene";
-import { captureEvent, EVENTS } from "@lib/analytics";
+import { EVENTS } from "@lib/analytics/events";
+import { captureEvent } from "@lib/analytics/capture";
 import {
   markRaceSetupCompleted,
   wasRaceSetupCompleted,

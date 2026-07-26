@@ -1,13 +1,15 @@
 import { afterEach, describe, expect, test } from "bun:test";
 import {
-  captureEvent,
   EVENTS,
   legAnalyticsProperties,
   raceAnalyticsProperties,
+} from "../src/lib/analytics/events.ts";
+import {
+  captureEvent,
   reportException,
   reportOperationFailure,
   setAnalyticsProvider,
-} from "../src/lib/analytics.ts";
+} from "../src/lib/analytics/capture.ts";
 
 afterEach(() => setAnalyticsProvider(null));
 

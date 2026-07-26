@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, test } from "bun:test";
-import { setAnalyticsProvider } from "../src/lib/analytics.ts";
+import { setAnalyticsProvider } from "../src/lib/analytics/capture.ts";
 import { createDefaultRace } from "../src/races/defaults.ts";
 import { createRaceBuilderAnalytics } from "../src/scenes/race-builder/analytics.ts";
 

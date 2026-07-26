@@ -4,7 +4,7 @@ import {
   PUBLIC_POSTHOG_HOST,
   PUBLIC_POSTHOG_PROJECT_TOKEN,
 } from "astro:env/client";
-import { setAnalyticsProvider, type AnalyticsProvider } from "../analytics";
+import { setAnalyticsProvider, type AnalyticsProvider } from "./capture";
 
 const consoleProvider: AnalyticsProvider = {
   capture(event, properties) {

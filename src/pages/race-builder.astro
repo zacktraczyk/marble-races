@@ -319,7 +319,7 @@ import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
 </Layout>
 
 <script>
-  import { reportOperationFailure } from "@lib/analytics";
+  import { reportOperationFailure } from "@lib/analytics/capture";
   import { mountScene } from "@scenes/mount";
   import createScene from "@scenes/race-builder";
   mountScene(createScene(), {

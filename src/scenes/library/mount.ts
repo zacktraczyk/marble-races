@@ -13,12 +13,8 @@ import { renderRaceThumbnail } from "@game/level/thumbnail";
 import { openConfirmDelete } from "@ui/confirmDelete";
 import { createExitAnimator } from "@ui/exitAnimation";
 import { attachTooltip } from "@ui/tooltip";
-import {
-  captureEvent,
-  EVENTS,
-  raceAnalyticsProperties,
-  reportOperationFailure,
-} from "@lib/analytics";
+import { EVENTS, raceAnalyticsProperties } from "@lib/analytics/events";
+import { captureEvent, reportOperationFailure } from "@lib/analytics/capture";
 import { legCountLabel } from "../format";
 import { raceBuilderUrl } from "../urls";
 import { attachThumbnailTour, type ThumbnailTour } from "./thumbnailTour";

@@ -275,7 +275,7 @@ import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
   </template>
 
   <script>
-    import { reportOperationFailure } from "@lib/analytics";
+    import { reportOperationFailure } from "@lib/analytics/capture";
     import { mountRaceLibrary } from "@scenes/library/mount";
     try {
       mountRaceLibrary();

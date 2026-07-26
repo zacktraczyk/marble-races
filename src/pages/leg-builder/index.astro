@@ -111,7 +111,7 @@ import "./_leg-builder.css";
 </Layout>
 
 <script>
-  import { reportOperationFailure } from "@lib/analytics";
+  import { reportOperationFailure } from "@lib/analytics/capture";
   import { mountScene } from "@scenes/mount";
   import { setInlineError } from "@ui/pageError";
   import createScene from "@scenes/leg-builder";

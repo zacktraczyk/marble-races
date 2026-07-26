@@ -1,9 +1,9 @@
 import {
-  captureEvent,
   EVENTS,
   legAnalyticsProperties,
   raceAnalyticsProperties,
-} from "@lib/analytics";
+} from "@lib/analytics/events";
+import { captureEvent } from "@lib/analytics/capture";
 import { isRacePlayable, type RaceDocument } from "@races";
 import type { RaceBuilderEvent } from "./events";
 
