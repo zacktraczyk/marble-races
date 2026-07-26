@@ -1,10 +1,10 @@
-import { Camera2D } from "../camera/camera2d";
-import { Entity, type EntityId } from "../core/entity";
-import { World, type EntityCoreDefinition } from "../core/world";
-import type { PhysicsComponentDefinition } from "../physics/component";
-import Physics, { type CollisionEvents } from "../physics/physics";
-import type { RenderComponentDefinition } from "../vdu/component";
-import { VDU } from "../vdu/vdu";
+import { Camera2D } from "./camera/camera2d";
+import { Entity, type EntityId } from "./core/entity";
+import { World, type EntityCoreDefinition } from "./core/world";
+import type { PhysicsComponentDefinition } from "./physics/component";
+import Physics, { type CollisionEvents } from "./physics/physics";
+import type { RenderComponentDefinition } from "./vdu/component";
+import { VDU } from "./vdu/vdu";
 
 /**
  * Everything needed to spawn one entity: neutral core data plus the optional

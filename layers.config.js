@@ -157,7 +157,9 @@ const zoneConfig = ({ dir, self, mayImport, alsoDeny = [], ignores }) => ({
 });
 
 const engineZoneConfig = ({ sub, mayImport }) => ({
-  files: [`src/engine/${sub}/**/*.{ts,js}`],
+  // A subsystem is either a folder or a single flat file (e.g. stage.ts), so
+  // match both spellings — otherwise flattening a folder silently kills its zone.
+  files: [`src/engine/${sub}/**/*.{ts,js}`, `src/engine/${sub}.{ts,js}`],
   rules: {
     "no-restricted-imports": [
       "error",
