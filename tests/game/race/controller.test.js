@@ -356,3 +356,266 @@ describe("race controller", () => {
     expect(() => createRace([0, 0])).toThrow("Duplicate stable team index");
   });
 });
+
+/**
+ * Builds a controller over stubs, capturing the physics observer the
+ * constructor registers so collision handling can be driven directly.
+ */
+const createRace = ({
+  finishZone = true,
+  spawnPoint = true,
+  configuration = {},
+  ...options
+} = {}) => {
+  const spawned = [];
+  const world = new Map();
+  let observer = null;
+  let nextId = 1;
+
+  const stage = {
+    physicsEnabled: false,
+    world: {
+      get: (id) => world.get(id),
+      flushDestruction: () => {},
+    },
+    spawn: (definition) => {
+      const entity = {
+        id: nextId++,
+        definition,
+        tags: new Set(definition.tags ?? []),
+        markedForDeletion: false,
+        hasTag: (tag) => entity.tags.has(tag),
+        delete: () => {
+          entity.markedForDeletion = true;
+        },
+      };
+      world.set(entity.id, entity);
+      spawned.push(entity);
+      return entity;
+    },
+    update: () => {},
+    clearOutOfBoundsEntities: () => [],
+    registerPhysicsObserver: (fn) => {
+      observer = fn;
+    },
+    unregisterPhysicsObserver: () => {
+      observer = null;
+    },
+  };
+
+  const level = {
+    wallThickness: 5,
+    has: (prefab) =>
+      prefab === "spawn-point"
+        ? spawnPoint
+        : prefab === "finish-zone"
+          ? finishZone
+          : false,
+    find: (prefab) => {
+      if (prefab === "spawn-point" && spawnPoint) {
+        return {
+          transform: { position: [0, -50], rotation: 0 },
+          properties: { radius: 20 },
+        };
+      }
+      if (prefab === "finish-zone" && finishZone) {
+        return {
+          transform: { position: [0, 50], rotation: 0 },
+          properties: { width: 120 },
+        };
+      }
+      return null;
+    },
+    resetMotion: () => {},
+    setRaceMarbleRadius: () => {},
+    setRoundConfiguration: () => {},
+    prepareMotionStep: () => {},
+  };
+
+  const race = new RaceController(
+    stage,
+    level,
+    {
+      teamCount: 2,
+      marblesPerTeam: 2,
+      releaseIntervalMs: 100,
+      ...configuration,
+    },
+    options
+  );
+  return {
+    race,
+    stage,
+    level,
+    spawned,
+    world,
+    fireCollisions: (events) => observer(events),
+  };
+};
+
+describe("race controller reset", () => {
+  test("returns to ready and refills the release queue", () => {
+    const { race } = createRace();
+
+    race.reset();
+
+    expect(race.snapshot).toMatchObject({
+      phase: "ready",
+      queuedMarbles: 4,
+      releasedMarbles: 0,
+      outOfBoundsMarbles: 0,
+      finishedMarbles: 0,
+    });
+  });
+
+  test("derives one finish placement per marble from the finish zone", () => {
+    const { race } = createRace();
+
+    race.reset();
+
+    expect(race.finishPlacements).toHaveLength(4);
+    expect(race.finishPlacements[0]).toMatchObject({
+      bayIndex: 0,
+      slotIndex: 0,
+    });
+  });
+
+  test("leaves placements empty when the course has no finish zone", () => {
+    const { race } = createRace({ finishZone: false });
+
+    race.reset();
+
+    expect(race.finishPlacements).toEqual([]);
+  });
+
+  test("disables stage physics for a locally driven race", () => {
+    const { race, stage } = createRace();
+    stage.physicsEnabled = true;
+
+    race.reset();
+
+    expect(stage.physicsEnabled).toBe(false);
+  });
+
+  test("leaves stage physics alone for an externally driven race", () => {
+    const { race, stage } = createRace({
+      external: { bounds: { minX: -1, maxX: 1, minY: -1, maxY: 1 } },
+    });
+    stage.physicsEnabled = true;
+
+    race.reset();
+
+    expect(stage.physicsEnabled).toBe(true);
+  });
+
+  test("clears marbles spawned by a previous run", () => {
+    const { race, spawned } = createRace();
+    race.reset();
+    race.toggleRunning();
+    race.fixedUpdate(100);
+    const released = spawned.filter((entity) =>
+      entity.definition.tags?.includes("released-marble")
+    );
+    expect(released.length).toBeGreaterThan(0);
+
+    race.reset();
+
+    expect(released.every((entity) => entity.markedForDeletion)).toBe(true);
+    expect(race.snapshot.releasedMarbles).toBe(0);
+  });
+});
+
+describe("race controller release", () => {
+  test("releases a wave of marbles once running", () => {
+    const { race, spawned } = createRace();
+    race.reset();
+
+    race.toggleRunning();
+    race.fixedUpdate(100);
+
+    const released = spawned.filter((entity) =>
+      entity.definition.tags?.includes("released-marble")
+    );
+    expect(released.length).toBeGreaterThan(0);
+    expect(race.snapshot.releasedMarbles).toBe(released.length);
+    expect(race.snapshot.queuedMarbles).toBe(4 - released.length);
+  });
+
+  test("refuses to start while the course is missing a spawn point", () => {
+    const { race, spawned } = createRace({ spawnPoint: false });
+    race.reset();
+
+    race.toggleRunning();
+    race.fixedUpdate(100);
+
+    expect(race.snapshot.phase).toBe("ready");
+    expect(race.snapshot.releasedMarbles).toBe(0);
+    expect(spawned).toHaveLength(0);
+  });
+
+  test("drains the queue over successive waves", () => {
+    const { race } = createRace();
+    race.reset();
+    race.toggleRunning();
+
+    for (let tick = 0; tick < 6; tick++) {
+      race.fixedUpdate(100);
+    }
+
+    expect(race.snapshot.queuedMarbles).toBe(0);
+    expect(race.snapshot.releasedMarbles).toBe(4);
+  });
+});
+
+describe("race controller collision handling", () => {
+  const releaseOne = (helpers) => {
+    helpers.race.reset();
+    helpers.race.toggleRunning();
+    helpers.race.fixedUpdate(100);
+    return helpers.spawned.find((entity) =>
+      entity.definition.tags?.includes("released-marble")
+    );
+  };
+
+  test("records a released marble that reaches the finish zone", () => {
+    const helpers = createRace();
+    const marble = releaseOne(helpers);
+    const finish = { id: 999, hasTag: (tag) => tag === "finish-zone" };
+    helpers.world.set(finish.id, finish);
+
+    helpers.fireCollisions({
+      entityCollisions: [{ entity1: marble.id, entity2: finish.id }],
+    });
+
+    expect(helpers.race.snapshot.finishedMarbles).toBe(1);
+  });
+
+  test("ignores collisions that do not involve a race marble", () => {
+    const helpers = createRace();
+    releaseOne(helpers);
+    const finish = { id: 999, hasTag: (tag) => tag === "finish-zone" };
+    const wall = { id: 998, hasTag: () => false };
+    helpers.world.set(finish.id, finish);
+    helpers.world.set(wall.id, wall);
+
+    helpers.fireCollisions({
+      entityCollisions: [{ entity1: wall.id, entity2: finish.id }],
+    });
+
+    expect(helpers.race.snapshot.finishedMarbles).toBe(0);
+  });
+
+  test("ignores a marble that has already been deleted", () => {
+    const helpers = createRace();
+    const marble = releaseOne(helpers);
+    marble.markedForDeletion = true;
+    const finish = { id: 999, hasTag: (tag) => tag === "finish-zone" };
+    helpers.world.set(finish.id, finish);
+
+    helpers.fireCollisions({
+      entityCollisions: [{ entity1: marble.id, entity2: finish.id }],
+    });
+
+    expect(helpers.race.snapshot.finishedMarbles).toBe(0);
+  });
+});
