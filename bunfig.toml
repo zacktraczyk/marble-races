@@ -1,0 +1,13 @@
+[test]
+# Bun applies coverageThreshold PER FILE, not to the suite total (the suite is
+# currently ~88% of functions and lines). 0.10 is the highest round value that
+# passes today; the binding file is editor/input/gestureUpdate.ts at ~14% of
+# lines. Treat this as a ratchet against a covered file decaying to near-zero,
+# not as a real quality bar.
+#
+# It also cannot police modules no test ever loads: those are absent from the
+# report entirely rather than reported as 0%. Roughly 88 of 143 src modules are
+# in that category, so the headline percentage flatters the suite.
+#
+# Raise this as coverage improves.
+coverageThreshold = 0.10
