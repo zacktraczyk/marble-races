@@ -1,8 +1,8 @@
-import type { Scene } from "../engine/runtime/scene";
-import { FreeCameraController } from "../engine/input/freeCameraController";
-import Stage from "../engine/stage";
-import { circleDefinition } from "../game/prefabs/primitives/circle";
-import { rectangleDefinition } from "../game/prefabs/primitives/rectangle";
+import type { Scene } from "@engine/runtime/scene";
+import { FreeCameraController } from "@engine/input/freeCameraController";
+import Stage from "@engine/stage";
+import { circleDefinition } from "@game/prefabs/primitives/circle";
+import { rectangleDefinition } from "@game/prefabs/primitives/rectangle";
 import { updateDebugInfo } from "./debugInfo";
 
 function createScene(): Scene {

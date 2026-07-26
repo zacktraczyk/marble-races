@@ -1,8 +1,8 @@
 import { debugArrowDefinition } from "./definitions";
-import type { Entity } from "../engine/core/entity";
-import type { Scene } from "../engine/runtime/scene";
-import Stage from "../engine/stage";
-import { rectangleDefinition } from "../game/prefabs/primitives/rectangle";
+import type { Entity } from "@engine/core/entity";
+import type { Scene } from "@engine/runtime/scene";
+import Stage from "@engine/stage";
+import { rectangleDefinition } from "@game/prefabs/primitives/rectangle";
 
 const ARROW_COLOR: [number, number, number, number] = [0.8, 0.4, 0.6, 1];
 const arrowDefinition = (start: [number, number], end: [number, number]) =>

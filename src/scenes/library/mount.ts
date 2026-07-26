@@ -8,17 +8,17 @@ import {
   eraScheduleForRace,
   isRacePlayable,
   requiredLegCount,
-} from "../../races";
-import { renderRaceThumbnail } from "../../game/level/thumbnail";
-import { openConfirmDelete } from "../../ui/confirmDelete";
-import { createExitAnimator } from "../../ui/exitAnimation";
-import { attachTooltip } from "../../ui/tooltip";
+} from "@races";
+import { renderRaceThumbnail } from "@game/level/thumbnail";
+import { openConfirmDelete } from "@ui/confirmDelete";
+import { createExitAnimator } from "@ui/exitAnimation";
+import { attachTooltip } from "@ui/tooltip";
 import {
   captureEvent,
   EVENTS,
   raceAnalyticsProperties,
   reportOperationFailure,
-} from "../../lib/analytics";
+} from "@lib/analytics";
 import { legCountLabel } from "../format";
 import { raceBuilderUrl } from "../urls";
 import { attachThumbnailTour, type ThumbnailTour } from "./thumbnailTour";

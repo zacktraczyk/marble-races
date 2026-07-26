@@ -1,4 +1,4 @@
-import type { Entity } from "../../engine/core/entity";
+import type { Entity } from "@engine/core/entity";
 
 export type RacePhase = "ready" | "running" | "paused" | "complete";
 

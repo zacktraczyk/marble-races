@@ -1,7 +1,7 @@
-import type { EntityDefinition } from "../../../engine/core/definition";
-import type { Vec2 } from "../../../engine/core/transform";
-import type { PhysicsEntityType } from "../../../engine/physics/entity";
-import type { Color } from "../../../engine/core/color";
+import type { EntityDefinition } from "@engine/core/definition";
+import type { Vec2 } from "@engine/core/transform";
+import type { PhysicsEntityType } from "@engine/physics/entity";
+import type { Color } from "@engine/core/color";
 
 export interface RightTriangleDefinitionOptions {
   position: Vec2;

@@ -1,4 +1,4 @@
-import type { LevelObjectMotion } from "../../../game/level/document";
+import type { LevelObjectMotion } from "@game/level/document";
 
 /** The builder's wall-motion vocabulary, distinct from the raw motion `type`. */
 export type WallMotionType = "none" | "slide" | "spin" | "sweep";

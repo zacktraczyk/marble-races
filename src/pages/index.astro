@@ -3,9 +3,9 @@
 // grid, width-normalized leg previews behind a bottom fade. Wired to the
 // real RaceRepository. Each card links to the race's builder, which acts as
 // the pre-launch screen until a dedicated preview page exists.
-import Layout from "../layouts/Layout.astro";
-import Tooltip from "../ui/Tooltip.astro";
-import ConfirmDeleteDialog from "../ui/ConfirmDeleteDialog.astro";
+import Layout from "@layouts/Layout.astro";
+import Tooltip from "@ui/Tooltip.astro";
+import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
 ---
 
 <Layout title="Race Library · Marble Races">
@@ -275,8 +275,8 @@ import ConfirmDeleteDialog from "../ui/ConfirmDeleteDialog.astro";
   </template>
 
   <script>
-    import { reportOperationFailure } from "../lib/analytics";
-    import { mountRaceLibrary } from "../scenes/library/mount";
+    import { reportOperationFailure } from "@lib/analytics";
+    import { mountRaceLibrary } from "@scenes/library/mount";
     try {
       mountRaceLibrary();
     } catch (error) {

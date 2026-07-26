@@ -5,7 +5,7 @@ import DevSceneLayout from "./_DevSceneLayout.astro";
 <DevSceneLayout panel="rail" debugAs="pre" />
 
 <script>
-  import { mountScene } from "../../debug/mount";
-  import createScene from "../../debug/gjk-collision.ts";
+  import { mountScene } from "@debug/mount";
+  import createScene from "@debug/gjk-collision.ts";
   mountScene(createScene(), { showFps: true });
 </script>

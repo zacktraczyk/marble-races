@@ -1,4 +1,4 @@
-import { GRID_SIZE } from "../../../../game/level/constants";
+import { GRID_SIZE } from "@game/level/constants";
 
 export const SIZE_SNAP_STEP = GRID_SIZE / 5;
 export const ROTATION_SNAP_STEP = Math.PI / 12;

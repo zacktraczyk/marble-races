@@ -1,15 +1,11 @@
-import type { Scene } from "../../engine/runtime/scene";
-import { captureEvent, EVENTS } from "../../lib/analytics";
+import type { Scene } from "@engine/runtime/scene";
+import { captureEvent, EVENTS } from "@lib/analytics";
 import {
   markRaceSetupCompleted,
   wasRaceSetupCompleted,
-} from "../../lib/analytics/setupCompletion";
-import { attachTooltip } from "../../ui/tooltip";
-import {
-  isRacePlayable,
-  RaceRepository,
-  type RaceDocument,
-} from "../../races";
+} from "@lib/analytics/setupCompletion";
+import { attachTooltip } from "@ui/tooltip";
+import { isRacePlayable, RaceRepository, type RaceDocument } from "@races";
 import { createRaceBuilderAnalytics } from "./analytics";
 import { bindRaceBuilderControls } from "./ui/controls";
 import type { RaceBuilderContext } from "./ui/context";

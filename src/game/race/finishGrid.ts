@@ -1,5 +1,5 @@
-import type { Vec2 } from "../../engine/core/transform";
-import { applyTransform } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
+import { applyTransform } from "@engine/core/transform";
 
 const assertPositiveFinite = (value: number, label: string) => {
   if (!Number.isFinite(value) || value <= 0) {

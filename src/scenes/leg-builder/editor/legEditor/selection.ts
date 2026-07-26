@@ -1,11 +1,11 @@
-import type { Vec2 } from "../../../../engine/core/transform";
-import type { LevelObjectData } from "../../../../game/level/document";
+import type { Vec2 } from "@engine/core/transform";
+import type { LevelObjectData } from "@game/level/document";
 import {
   applyLevelObjectShape,
   getLevelObjectBounds,
   getLevelObjectShape,
   type Bounds,
-} from "../../../../game/level/geometry";
+} from "@game/level/geometry";
 import { moveShape, rotateShape } from "../geometry";
 
 /** Owns selection and hover identity independently from gesture handling. */

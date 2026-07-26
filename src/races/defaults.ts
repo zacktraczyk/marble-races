@@ -1,12 +1,12 @@
-import { LevelDocument } from "../game/level/document";
-import type { Color } from "../engine/core/color";
-import { TEAM_COLORS, TEAM_NAMES } from "../game/race/teams";
+import { LevelDocument } from "@game/level/document";
+import type { Color } from "@engine/core/color";
+import { TEAM_COLORS, TEAM_NAMES } from "@game/race/teams";
 import {
   COURSE_STROKE_WIDTH,
   STAGE_HEIGHT,
   STAGE_WIDTH,
-} from "../game/level/constants";
-import { createDefaultCourse } from "../game/level/objects";
+} from "@game/level/constants";
+import { createDefaultCourse } from "@game/level/objects";
 import type { RaceDocument, RaceLegDocument, RaceParticipant } from "./types";
 import {
   MAX_RACE_DESCRIPTION_LENGTH,

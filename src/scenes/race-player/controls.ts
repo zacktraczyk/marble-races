@@ -1,4 +1,4 @@
-import type { RaceDocument } from "../../races/types";
+import type { RaceDocument } from "@races/types";
 
 /** Status line while a leg is actively racing. */
 export const runningLegStatus = ({

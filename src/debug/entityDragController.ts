@@ -1,5 +1,5 @@
-import type { Camera2D } from "../engine/camera/camera2d";
-import type { Entity } from "../engine/core/entity";
+import type { Camera2D } from "@engine/camera/camera2d";
+import type { Entity } from "@engine/core/entity";
 
 export type DraggableEntity = {
   entity: Entity;

@@ -32,12 +32,12 @@
   <body>
     <canvas id="benchmark-canvas" width="800" height="800"></canvas>
     <script>
-      import { createVduBenchmark } from "../../benchmarks/vdu/harness";
-      import { DEFAULT_SCENARIO_COUNTS } from "../../benchmarks/vdu/scenarios";
+      import { createVduBenchmark } from "@benchmarks/vdu/harness";
+      import { DEFAULT_SCENARIO_COUNTS } from "@benchmarks/vdu/scenarios";
       import type {
         VduScenarioConfig,
         VduScenarioName,
-      } from "../../benchmarks/shared/types";
+      } from "@benchmarks/shared/types";
 
       type VDURenderStrategy = VduScenarioConfig["renderer"];
 

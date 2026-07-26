@@ -5,7 +5,7 @@ import type {
   SliderRepeat,
 } from "./document";
 import { getSliderSpeed, oscillationPeriodForPeakSpeed } from "./motion";
-import type { Vec2 } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
 import { FINISH_RACK_HEIGHT } from "../prefabs/finishZone";
 import { finishRackHeightFor } from "../race/finishGrid";
 import {

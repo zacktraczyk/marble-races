@@ -1,19 +1,19 @@
-import { CameraResizeController } from "../engine/camera/resizeController";
-import { uniformCameraFitInsets } from "../engine/camera/fit";
-import Stage from "../engine/stage";
-import type { Entity } from "../engine/core/entity";
-import { FreeCameraController } from "../engine/input/freeCameraController";
-import type { Scene } from "../engine/runtime/scene";
-import { finishZoneDefinition } from "../game/prefabs/finishZone";
-import { marbleDefinition } from "../game/prefabs/marble";
+import { CameraResizeController } from "@engine/camera/resizeController";
+import { uniformCameraFitInsets } from "@engine/camera/fit";
+import Stage from "@engine/stage";
+import type { Entity } from "@engine/core/entity";
+import { FreeCameraController } from "@engine/input/freeCameraController";
+import type { Scene } from "@engine/runtime/scene";
+import { finishZoneDefinition } from "@game/prefabs/finishZone";
+import { marbleDefinition } from "@game/prefabs/marble";
 import {
   rectangleDefinition,
   type RectangleDefinitionOptions,
-} from "../game/prefabs/primitives/rectangle";
+} from "@game/prefabs/primitives/rectangle";
 import {
   rightTriangleDefinition,
   type RightTriangleDefinitionOptions,
-} from "../game/prefabs/primitives/rightTriangle";
+} from "@game/prefabs/primitives/rightTriangle";
 
 type Color = [number, number, number, number];
 

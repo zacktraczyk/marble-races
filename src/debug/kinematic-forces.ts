@@ -1,10 +1,10 @@
-import type { Entity } from "../engine/core/entity";
-import { FreeCameraController } from "../engine/input/freeCameraController";
-import type { Scene } from "../engine/runtime/scene";
-import Stage from "../engine/stage";
-import type { Color } from "../engine/core/color";
-import { circleDefinition } from "../game/prefabs/primitives/circle";
-import { rectangleDefinition } from "../game/prefabs/primitives/rectangle";
+import type { Entity } from "@engine/core/entity";
+import { FreeCameraController } from "@engine/input/freeCameraController";
+import type { Scene } from "@engine/runtime/scene";
+import Stage from "@engine/stage";
+import type { Color } from "@engine/core/color";
+import { circleDefinition } from "@game/prefabs/primitives/circle";
+import { rectangleDefinition } from "@game/prefabs/primitives/rectangle";
 
 const NUM_BALLS = 40;
 const BALL_RADIUS = 30;

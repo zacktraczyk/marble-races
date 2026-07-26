@@ -5,7 +5,7 @@ import DevSceneLayout from "./_DevSceneLayout.astro";
 <DevSceneLayout panel="none" />
 
 <script>
-  import { mountScene } from "../../debug/mount";
-  import createScene from "../../debug/random-balls.ts";
+  import { mountScene } from "@debug/mount";
+  import createScene from "@debug/random-balls.ts";
   mountScene(createScene(), { showFps: true });
 </script>

@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Tooltip from "../ui/Tooltip.astro";
-import ConfirmDeleteDialog from "../ui/ConfirmDeleteDialog.astro";
+import Layout from "@layouts/Layout.astro";
+import Tooltip from "@ui/Tooltip.astro";
+import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
 ---
 
 <Layout title="Race Builder · Marble Races">
@@ -319,9 +319,9 @@ import ConfirmDeleteDialog from "../ui/ConfirmDeleteDialog.astro";
 </Layout>
 
 <script>
-  import { reportOperationFailure } from "../lib/analytics";
-  import { mountScene } from "../scenes/mount";
-  import createScene from "../scenes/race-builder";
+  import { reportOperationFailure } from "@lib/analytics";
+  import { mountScene } from "@scenes/mount";
+  import createScene from "@scenes/race-builder";
   mountScene(createScene(), {
     onError: (error, phase) => {
       const reason =

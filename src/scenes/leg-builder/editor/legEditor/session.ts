@@ -1,5 +1,5 @@
-import type { Vec2 } from "../../../../engine/core/transform";
-import type { LevelObjectData } from "../../../../game/level/document";
+import type { Vec2 } from "@engine/core/transform";
+import type { LevelObjectData } from "@game/level/document";
 import { isCreationTool, SelectedTool } from "../tools";
 import type { EditorGesture, WallEndpointFeedback } from "./gestures";
 import type { WallEndpointTarget } from "./hitTest";

@@ -1,5 +1,5 @@
-import type { Vec2 } from "../../../engine/core/transform";
-import { MAX_TEAMS } from "../../../game/race/teams";
+import type { Vec2 } from "@engine/core/transform";
+import { MAX_TEAMS } from "@game/race/teams";
 import {
   COURSE_STROKE_WIDTH,
   MAX_STAGE_HEIGHT,
@@ -9,8 +9,8 @@ import {
   MIN_STAGE_WIDTH,
   MIN_WALL_THICKNESS,
   STAGE_SIZE_STEP,
-} from "../../../game/level/constants";
-import type { RoundConfiguration } from "../../../game/race/types";
+} from "@game/level/constants";
+import type { RoundConfiguration } from "@game/race/types";
 import type { BuilderUi } from ".";
 import { clampInteger, clampStepInteger } from "./input";
 

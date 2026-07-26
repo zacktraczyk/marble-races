@@ -2,7 +2,7 @@ import {
   computeEraSchedule,
   type EraScheduleLeg,
   type LegFinishPlan,
-} from "../game/race/eraSchedule";
+} from "@game/race/eraSchedule";
 import type { RaceDocument, RaceLegDocument } from "./types";
 
 /** Maps a race's legs to the `{ width, wallThickness }` inputs era planning needs. */

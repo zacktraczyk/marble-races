@@ -1,20 +1,17 @@
-import Stage from "../../engine/stage";
-import {
-  computeEraSchedule,
-  type LegFinishPlan,
-} from "../../game/race/eraSchedule";
-import { TEAM_COLORS } from "../../game/race/teams";
+import Stage from "@engine/stage";
+import { computeEraSchedule, type LegFinishPlan } from "@game/race/eraSchedule";
+import { TEAM_COLORS } from "@game/race/teams";
 import {
   isRaceDocument,
   isRacePlayable,
   type RaceDocument,
-} from "../../races/types";
-import { legScheduleInputs } from "../../races/eraSchedule";
+} from "@races/types";
+import { legScheduleInputs } from "@races/eraSchedule";
 import {
   MAX_MARBLE_RADIUS,
   MIN_MARBLE_RADIUS,
   STAGING_MARBLE_GAP,
-} from "../../game/level/constants";
+} from "@game/level/constants";
 import { computeLegStackLayout, type LegFrame } from "./legStack";
 import { fallbackEliminationIndex, RaceProgression } from "./progression";
 import { RaceCameraController } from "./raceCamera";
@@ -24,8 +21,8 @@ import { RacePlayerPresenter } from "./presenter";
 import { setupChromeAutoHide } from "./chromeAutoHide";
 import { bindRacePlayerControls, runningLegStatus } from "./controls";
 import { LegInstance } from "./legInstance";
-import { roundConfigurationFromFinishPlan } from "../../game/race/legRound";
-import type { RoundConfiguration } from "../../game/race/types";
+import { roundConfigurationFromFinishPlan } from "@game/race/legRound";
+import type { RoundConfiguration } from "@game/race/types";
 
 /**
  * Fraction of the incoming leg that must be on screen before its marbles start

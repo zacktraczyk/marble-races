@@ -1,4 +1,4 @@
-import type { Vec2 } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
 import { GRID_DOT_MAJOR_INTERVAL, GRID_SIZE } from "./constants";
 
 export type GridWorldBounds = {

@@ -1,14 +1,10 @@
-import {
-  RaceRepository,
-  isRacePlayable,
-  type RaceDocument,
-} from "../../races";
+import { RaceRepository, isRacePlayable, type RaceDocument } from "@races";
 import {
   captureEvent,
   EVENTS,
   raceAnalyticsProperties,
   reportOperationFailure,
-} from "../../lib/analytics";
+} from "@lib/analytics";
 import { mountScene } from "../mount";
 import { raceBuilderUrl } from "../urls";
 import createRacePlayerScene from "./index";

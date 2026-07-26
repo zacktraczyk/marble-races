@@ -1,19 +1,19 @@
-import { getLevelObjectShape } from "../../../game/level/geometry";
+import { getLevelObjectShape } from "@game/level/geometry";
 import type { LegEditorController } from "../editor/legEditor";
 import type {
   LevelObjectData,
   LevelObjectMotion,
   SliderRepeat,
-} from "../../../game/level/document";
-import type { Vec2 } from "../../../engine/core/transform";
+} from "@game/level/document";
+import type { Vec2 } from "@engine/core/transform";
 import {
   pusherPeriodForSpeed,
   pusherSpeedForMotion,
   PUSHER_DEFAULT_RANGE,
   PUSHER_PERIODS,
   type PusherSpeed,
-} from "../../../game/level/objects";
-import type { AuthoredLevel } from "../../../game/level/authoredLevel";
+} from "@game/level/objects";
+import type { AuthoredLevel } from "@game/level/authoredLevel";
 import type { BuilderUi } from ".";
 import { clampInteger } from "./input";
 

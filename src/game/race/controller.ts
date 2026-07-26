@@ -1,6 +1,6 @@
-import type { Entity, EntityId } from "../../engine/core/entity";
-import type { CollisionEvents } from "../../engine/physics/physics";
-import type Stage from "../../engine/stage";
+import type { Entity, EntityId } from "@engine/core/entity";
+import type { CollisionEvents } from "@engine/physics/physics";
+import type Stage from "@engine/stage";
 import { marbleDefinition } from "../prefabs/marble";
 import {
   createPackedFinishLayout,

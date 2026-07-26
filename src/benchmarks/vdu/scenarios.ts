@@ -1,11 +1,11 @@
-import type { Color } from "../../engine/core/color";
-import type { EntityDefinition } from "../../engine/core/definition";
-import type { RenderPrimitive } from "../../engine/vdu/component";
-import { Camera2D } from "../../engine/camera/camera2d";
-import Stage from "../../engine/stage";
-import { VDU } from "../../engine/vdu/vdu";
-import { marbleDefinition } from "../../game/prefabs/marble";
-import { rectangleDefinition } from "../../game/prefabs/primitives/rectangle";
+import type { Color } from "@engine/core/color";
+import type { EntityDefinition } from "@engine/core/definition";
+import type { RenderPrimitive } from "@engine/vdu/component";
+import { Camera2D } from "@engine/camera/camera2d";
+import Stage from "@engine/stage";
+import { VDU } from "@engine/vdu/vdu";
+import { marbleDefinition } from "@game/prefabs/marble";
+import { rectangleDefinition } from "@game/prefabs/primitives/rectangle";
 import type { VduScenarioConfig, VduScenarioName } from "../shared/types";
 
 export interface BenchmarkScene {

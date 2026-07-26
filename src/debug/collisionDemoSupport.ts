@@ -1,4 +1,4 @@
-import type { Entity } from "../engine/core/entity";
+import type { Entity } from "@engine/core/entity";
 import type { DraggableEntity } from "./entityDragController";
 import {
   debugArrowDefinition,
@@ -6,9 +6,9 @@ import {
   draggableCircleDefinition,
   draggableShapeDefinition,
 } from "./definitions";
-import type { Collision } from "../engine/physics/collision";
-import type Stage from "../engine/stage";
-import type { Vec2 } from "../engine/core/transform";
+import type { Collision } from "@engine/physics/collision";
+import type Stage from "@engine/stage";
+import type { Vec2 } from "@engine/core/transform";
 
 const HANDLE_RADIUS = 15;
 const HANDLE_COLOR: [number, number, number, number] = [0.4, 0.4, 0.4, 1];

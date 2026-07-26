@@ -5,7 +5,7 @@ import DevSceneLayout from "./_DevSceneLayout.astro";
 <DevSceneLayout panel="dock" />
 
 <script>
-  import { mountScene } from "../../debug/mount";
-  import createScene from "../../debug/angular-collisions.ts";
+  import { mountScene } from "@debug/mount";
+  import createScene from "@debug/angular-collisions.ts";
   mountScene(createScene(), { showFps: true });
 </script>

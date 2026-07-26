@@ -8,7 +8,7 @@ import {
   createFinishRackFrame,
   finishLineCells,
 } from "../prefabs/finishZone";
-import type { Color } from "../../engine/core/color";
+import type { Color } from "@engine/core/color";
 import { topSliderSpawnClearance } from "../prefabs/spawnPoint";
 import { MAX_MARBLE_RADIUS } from "./constants";
 

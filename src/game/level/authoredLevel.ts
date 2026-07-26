@@ -4,10 +4,10 @@ import {
   type NewLevelObjectData,
   type SerializedLevel,
 } from "./document";
-import type { Entity } from "../../engine/core/entity";
-import type { Vec2 } from "../../engine/core/transform";
-import { millisecondsToSimulationSeconds } from "../../engine/physics/physics";
-import type Stage from "../../engine/stage";
+import type { Entity } from "@engine/core/entity";
+import type { Vec2 } from "@engine/core/transform";
+import { millisecondsToSimulationSeconds } from "@engine/physics/physics";
+import type Stage from "@engine/stage";
 import { doesSliderLoopResetBetween, getLevelObjectMotionPose } from "./motion";
 import { levelObjectDefinitions } from "../prefabs/levelObject";
 import { applyTopSliderSpawnLayout } from "./objects";

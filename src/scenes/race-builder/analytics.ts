@@ -3,8 +3,8 @@ import {
   EVENTS,
   legAnalyticsProperties,
   raceAnalyticsProperties,
-} from "../../lib/analytics";
-import { isRacePlayable, type RaceDocument } from "../../races";
+} from "@lib/analytics";
+import { isRacePlayable, type RaceDocument } from "@races";
 import type { RaceBuilderEvent } from "./events";
 
 type RaceBuilderAnalyticsOptions = {

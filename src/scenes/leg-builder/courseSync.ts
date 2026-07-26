@@ -1,15 +1,12 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type {
-  LevelObjectData,
-  SpawnPointVariant,
-} from "../../game/level/document";
+import type { Vec2 } from "@engine/core/transform";
+import type { LevelObjectData, SpawnPointVariant } from "@game/level/document";
 import {
   applyTopSliderSpawnLayout,
   createCourseBoundaries,
-} from "../../game/level/objects";
-import type { RoundConfiguration } from "../../game/race/types";
-import type { AuthoredLevel } from "../../game/level/authoredLevel";
-import type Stage from "../../engine/stage";
+} from "@game/level/objects";
+import type { RoundConfiguration } from "@game/race/types";
+import type { AuthoredLevel } from "@game/level/authoredLevel";
+import type Stage from "@engine/stage";
 import { computeCourseGridWorldBounds } from "./courseGridBounds";
 import { constrainSpawnPoint } from "./spawnConstraint";
 import { readCourseSize, readWallThickness } from "./ui/settings";

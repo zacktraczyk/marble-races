@@ -5,7 +5,7 @@ import DevSceneLayout from "./_DevSceneLayout.astro";
 <DevSceneLayout panel="dock" debugAs="pre" />
 
 <script>
-  import { mountScene } from "../../debug/mount";
-  import createScene from "../../debug/first-race.ts";
+  import { mountScene } from "@debug/mount";
+  import createScene from "@debug/first-race.ts";
   mountScene(createScene(), { showFps: true });
 </script>

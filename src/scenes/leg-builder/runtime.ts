@@ -1,4 +1,4 @@
-import type { Vec2 } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
 import { EditorOverlay, LegEditorController } from "./editor/legEditor";
 import { LegHistory } from "./editor/legHistory";
 import type {
@@ -6,14 +6,14 @@ import type {
   NewLevelObjectData,
   SerializedLevel,
   SpawnPointVariant,
-} from "../../game/level/document";
-import Stage from "../../engine/stage";
-import { AuthoredLevel } from "../../game/level/authoredLevel";
+} from "@game/level/document";
+import Stage from "@engine/stage";
+import { AuthoredLevel } from "@game/level/authoredLevel";
 import {
   STAGE_HEIGHT,
   STAGE_WIDTH,
   MAX_MARBLE_RADIUS,
-} from "../../game/level/constants";
+} from "@game/level/constants";
 import {
   createDefaultCourse,
   createPusher,
@@ -21,10 +21,10 @@ import {
   createWall,
   pusherSpeedForMotion,
   type SliderPlacementDefaults,
-} from "../../game/level/objects";
-import { createGridLayout } from "../../game/level/grid";
-import { getLevelObjectShape } from "../../game/level/geometry";
-import type { RoundConfiguration } from "../../game/race/types";
+} from "@game/level/objects";
+import { createGridLayout } from "@game/level/grid";
+import { getLevelObjectShape } from "@game/level/geometry";
+import type { RoundConfiguration } from "@game/race/types";
 import {
   isCreationTool,
   isPusherTool,
@@ -32,7 +32,7 @@ import {
   type PusherTool,
   SelectedTool,
 } from "./editor/tools";
-import { RaceController } from "../../game/race/controller";
+import { RaceController } from "@game/race/controller";
 import { LegCourseSync } from "./courseSync";
 import { BuilderCameraController } from "./ui/cameraController";
 import { BuilderControls } from "./ui/controls";
@@ -42,7 +42,7 @@ import { GridOverlay } from "./ui/gridOverlay";
 import { MotionInspectorController } from "./ui/motionInspector";
 import { TransformInspectorController } from "./ui/transformInspector";
 import { updateBuilderInterface } from "./ui/presenter";
-import { TooltipController } from "../../ui/tooltip";
+import { TooltipController } from "@ui/tooltip";
 
 export type LegBuilderOptions = {
   initialLevel?: SerializedLevel;

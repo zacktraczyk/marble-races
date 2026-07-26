@@ -1,4 +1,4 @@
-import type { LegFinishPlan } from "../../../game/race/eraSchedule";
+import type { LegFinishPlan } from "@game/race/eraSchedule";
 import {
   MARBLES_PER_TEAM_OPTIONS,
   MAX_RACE_PARTICIPANTS,
@@ -7,9 +7,9 @@ import {
   isRacePlayable,
   requiredLegCount,
   type RaceLegDocument,
-} from "../../../races";
-import { renderLevelThumbnail } from "../../../game/level/thumbnail";
-import { openConfirmDelete } from "../../../ui/confirmDelete";
+} from "@races";
+import { renderLevelThumbnail } from "@game/level/thumbnail";
+import { openConfirmDelete } from "@ui/confirmDelete";
 import { legCountLabel } from "../../format";
 import { racePlayerUrl } from "../../urls";
 import { wireLegDragHandle } from "./dragReorder";

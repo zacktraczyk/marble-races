@@ -1,5 +1,5 @@
-import type { Vec2 } from "../../engine/core/transform";
-import { applyTransform } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
+import { applyTransform } from "@engine/core/transform";
 import type { LevelObjectData } from "./document";
 import { getLevelObjectShape, type LevelObjectShape } from "./geometry";
 

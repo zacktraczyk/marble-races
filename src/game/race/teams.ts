@@ -1,4 +1,4 @@
-import type { Color } from "../../engine/core/color";
+import type { Color } from "@engine/core/color";
 
 export const MIN_TEAMS = 1;
 export const MAX_TEAMS = 12;

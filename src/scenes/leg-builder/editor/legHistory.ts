@@ -1,4 +1,4 @@
-import type { SerializedLevel } from "../../../game/level/document";
+import type { SerializedLevel } from "@game/level/document";
 
 const cloneLevel = (level: SerializedLevel) => structuredClone(level);
 const fingerprint = (level: SerializedLevel) => JSON.stringify(level);

@@ -1,5 +1,5 @@
-import type { Entity } from "../engine/core/entity";
-import type { Vec2 } from "../engine/core/transform";
+import type { Entity } from "@engine/core/entity";
+import type { Vec2 } from "@engine/core/transform";
 import {
   debugArrowDefinition,
   debugPointDefinition,
@@ -9,12 +9,12 @@ import { GJKNarrowPhase } from "./gjk";
 import {
   SequentialImpulseSolver,
   type Collision,
-} from "../engine/physics/collision";
+} from "@engine/physics/collision";
 import { EntityDragController } from "./entityDragController";
-import { FreeCameraController } from "../engine/input/freeCameraController";
-import Physics from "../engine/physics/physics";
-import type { Scene } from "../engine/runtime/scene";
-import Stage from "../engine/stage";
+import { FreeCameraController } from "@engine/input/freeCameraController";
+import Physics from "@engine/physics/physics";
+import type { Scene } from "@engine/runtime/scene";
+import Stage from "@engine/stage";
 import {
   collisionDebugData,
   deleteEntities,

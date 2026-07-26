@@ -1,7 +1,7 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type { LevelObjectData } from "../../game/level/document";
-import { hitTestLevelObject } from "../../game/level/geometry";
-import { applyTopSliderSpawnLayout } from "../../game/level/objects";
+import type { Vec2 } from "@engine/core/transform";
+import type { LevelObjectData } from "@game/level/document";
+import { hitTestLevelObject } from "@game/level/geometry";
+import { applyTopSliderSpawnLayout } from "@game/level/objects";
 
 type SpawnPoint = Extract<LevelObjectData, { prefab: "spawn-point" }>;
 

@@ -5,11 +5,8 @@ import {
   getLevelObjectShape,
   getWallThickness,
   type LevelObjectShape,
-} from "../../../game/level/geometry";
-import {
-  MAX_WALL_THICKNESS,
-  MIN_WALL_THICKNESS,
-} from "../../../game/level/constants";
+} from "@game/level/geometry";
+import { MAX_WALL_THICKNESS, MIN_WALL_THICKNESS } from "@game/level/constants";
 import { wallMotionLabel } from "./wallMotion";
 import type { BuilderUi } from ".";
 

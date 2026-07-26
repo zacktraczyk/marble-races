@@ -1,7 +1,7 @@
-import type { EntityDefinition } from "../../engine/core/definition";
-import type { Vec2 } from "../../engine/core/transform";
-import { applyTransform } from "../../engine/core/transform";
-import type { Color } from "../../engine/core/color";
+import type { EntityDefinition } from "@engine/core/definition";
+import type { Vec2 } from "@engine/core/transform";
+import { applyTransform } from "@engine/core/transform";
+import type { Color } from "@engine/core/color";
 import type { FinishBayOptions } from "../race/finishGrid";
 import { finishBayInnerSize, finishRackHeightFor } from "../race/finishGrid";
 import { rectangleDefinition } from "./primitives/rectangle";

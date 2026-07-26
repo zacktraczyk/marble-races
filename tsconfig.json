@@ -1,5 +1,20 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@engine/*": ["src/engine/*"],
+      "@game/*": ["src/game/*"],
+      "@races": ["src/races/index.ts"],
+      "@races/*": ["src/races/*"],
+      "@scenes/*": ["src/scenes/*"],
+      "@debug/*": ["src/debug/*"],
+      "@ui/*": ["src/ui/*"],
+      "@lib/*": ["src/lib/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@benchmarks/*": ["src/benchmarks/*"]
+    }
+  }
 }

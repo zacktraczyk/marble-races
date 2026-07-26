@@ -5,7 +5,7 @@ import DevSceneLayout from "./_DevSceneLayout.astro";
 <DevSceneLayout panel="dock" />
 
 <script>
-  import { mountScene } from "../../debug/mount";
-  import createScene from "../../debug/kinematic-forces.ts";
+  import { mountScene } from "@debug/mount";
+  import createScene from "@debug/kinematic-forces.ts";
   mountScene(createScene(), { showFps: true });
 </script>

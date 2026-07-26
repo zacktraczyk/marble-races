@@ -1,11 +1,11 @@
-import type { Vec2 } from "../../engine/core/transform";
-import type { Camera2D } from "../../engine/camera/camera2d";
+import type { Vec2 } from "@engine/core/transform";
+import type { Camera2D } from "@engine/camera/camera2d";
 import {
   calculateCameraFitForRect,
   visibleVerticalFraction,
   type CameraFitInsets,
   type WorldRect,
-} from "../../engine/camera/fit";
+} from "@engine/camera/fit";
 
 /** Lower bound on a glide's duration, in milliseconds. */
 export const GLIDE_MIN_DURATION_MS = 900;

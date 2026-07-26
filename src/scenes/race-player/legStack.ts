@@ -1,7 +1,7 @@
-import type { Vec2 } from "../../engine/core/transform";
-import { FINISH_RACK_HEIGHT } from "../../game/prefabs/finishZone";
-import type { LegFinishPlan } from "../../game/race/eraSchedule";
-import type { RaceLegDocument } from "../../races/types";
+import type { Vec2 } from "@engine/core/transform";
+import { FINISH_RACK_HEIGHT } from "@game/prefabs/finishZone";
+import type { LegFinishPlan } from "@game/race/eraSchedule";
+import type { RaceLegDocument } from "@races/types";
 
 export type LegFrame = {
   index: number;

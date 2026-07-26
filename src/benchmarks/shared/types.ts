@@ -1,7 +1,4 @@
-import type {
-  VDURenderMetadata,
-  VDURenderStrategy,
-} from "../../engine/vdu/vdu";
+import type { VDURenderMetadata, VDURenderStrategy } from "@engine/vdu/vdu";
 
 export interface WarmupOptions {
   frames?: number;

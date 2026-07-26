@@ -1,6 +1,6 @@
-import type { LevelObjectData } from "../../game/level/document";
-import { getLevelObjectBounds } from "../../game/level/geometry";
-import type { GridWorldBounds } from "../../game/level/grid";
+import type { LevelObjectData } from "@game/level/document";
+import { getLevelObjectBounds } from "@game/level/geometry";
+import type { GridWorldBounds } from "@game/level/grid";
 
 /** Interior playfield bounds from locked walls and finish zone. */
 export const computeCourseGridWorldBounds = ({

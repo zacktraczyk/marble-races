@@ -1,6 +1,6 @@
-import type { EntityDefinition } from "../../engine/core/definition";
-import type { Vec2 } from "../../engine/core/transform";
-import type { Color } from "../../engine/core/color";
+import type { EntityDefinition } from "@engine/core/definition";
+import type { Vec2 } from "@engine/core/transform";
+import type { Color } from "@engine/core/color";
 import {
   DEFAULT_SPAWN_DIRECTION_VARIANCE,
   spawnAreaRadius,

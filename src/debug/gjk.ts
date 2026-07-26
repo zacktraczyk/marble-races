@@ -3,9 +3,9 @@ import {
   type Collision,
   type ContactManifold,
   type NarrowPhase,
-} from "../engine/physics/collision/types";
-import { Observer } from "../engine/utils/observer";
-import type { PhysicsEntity } from "../engine/physics/entity";
+} from "@engine/physics/collision/types";
+import { Observer } from "@engine/utils/observer";
+import type { PhysicsEntity } from "@engine/physics/entity";
 
 /** Builds an approximate one-point manifold for diagnostic-only detectors. */
 const createApproximateManifold = ({

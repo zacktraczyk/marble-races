@@ -1,7 +1,7 @@
 ---
-import HomeLink from "../../ui/HomeLink.astro";
-import Layout from "../../layouts/Layout.astro";
-import Tooltip from "../../ui/Tooltip.astro";
+import HomeLink from "@ui/HomeLink.astro";
+import Layout from "@layouts/Layout.astro";
+import Tooltip from "@ui/Tooltip.astro";
 import Toolbar from "./_Toolbar.astro";
 import ViewportChrome from "./_ViewportChrome.astro";
 import RaceControls from "./_RaceControls.astro";
@@ -111,10 +111,10 @@ import "./_leg-builder.css";
 </Layout>
 
 <script>
-  import { reportOperationFailure } from "../../lib/analytics";
-  import { mountScene } from "../../scenes/mount";
-  import { setInlineError } from "../../ui/pageError";
-  import createScene from "../../scenes/leg-builder";
+  import { reportOperationFailure } from "@lib/analytics";
+  import { mountScene } from "@scenes/mount";
+  import { setInlineError } from "@ui/pageError";
+  import createScene from "@scenes/leg-builder";
 
   const errorElement = document.getElementById("builder-error");
   try {

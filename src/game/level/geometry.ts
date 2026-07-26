@@ -1,4 +1,4 @@
-import type { Vec2 } from "../../engine/core/transform";
+import type { Vec2 } from "@engine/core/transform";
 import type { LevelObjectData } from "./document";
 
 export type RectangleLevelShape = {

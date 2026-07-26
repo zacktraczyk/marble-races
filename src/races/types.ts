@@ -1,5 +1,5 @@
-import type { SerializedLevel } from "../game/level/document";
-import type { Color } from "../engine/core/color";
+import type { SerializedLevel } from "@game/level/document";
+import type { Color } from "@engine/core/color";
 
 export const RACE_DOCUMENT_VERSION = 1 as const;
 export const RACE_LIBRARY_VERSION = 1 as const;

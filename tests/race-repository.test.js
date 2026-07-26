@@ -1,12 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import {
-  createDefaultLeg,
-  createDefaultRace,
-} from "../src/races/defaults.ts";
-import {
-  parseRaceLibrary,
-  RaceRepository,
-} from "../src/races/repository.ts";
+import { createDefaultLeg, createDefaultRace } from "../src/races/defaults.ts";
+import { parseRaceLibrary, RaceRepository } from "../src/races/repository.ts";
 import { isRacePlayable } from "../src/races/types.ts";
 
 class MemoryStorage {
