@@ -12,7 +12,7 @@ import {
 } from "@game/level/constants";
 import type { RoundConfiguration } from "@game/race/types";
 import type { BuilderUi } from ".";
-import { clampInteger, clampStepInteger } from "./input";
+import { clampInteger, clampStepInteger } from "./fieldInput";
 
 export const readCourseSize = (ui: BuilderUi): Vec2 => [
   clampStepInteger(

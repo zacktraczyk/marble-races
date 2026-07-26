@@ -15,7 +15,7 @@ import {
 } from "@game/level/objects";
 import type { AuthoredLevel } from "@game/level/authoredLevel";
 import type { BuilderUi } from ".";
-import { clampInteger } from "./input";
+import { clampInteger } from "./fieldInput";
 
 /** Owns editing of motion properties for the currently selected wall. */
 export class MotionInspectorController {
