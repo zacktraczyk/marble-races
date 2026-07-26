@@ -1,7 +1,6 @@
 import type { Entity, EntityId } from "@engine/core/entity";
 import type { EntityDefinition } from "@engine/stage";
 import type { CollisionEvents } from "@engine/physics/physics";
-import { marbleDefinition } from "../prefabs/marble";
 import {
   createPackedFinishLayout,
   createPackedFinishPlacements,
@@ -9,13 +8,7 @@ import {
 } from "./finishGrid";
 import { RoundRobinReleaseQueue } from "./releaseQueue";
 import { TEAM_COLORS } from "./teams";
-import {
-  DEFAULT_SPAWN_DIRECTION_VARIANCE,
-  randomSpawnAngle,
-  randomSpawnOffsetsInCircle,
-  spawnAreaRadius,
-} from "./spawn";
-import { getLevelObjectMotionPose } from "../level/motion";
+import { randomSpawnOffsetsInCircle, spawnAreaRadius } from "./spawn";
 import type { AuthoredLevel } from "../level/authoredLevel";
 import {
   MAX_MARBLE_RADIUS,
@@ -23,6 +16,14 @@ import {
   STAGING_MARBLE_GAP,
 } from "../level/constants";
 import { RoundFinishTracker } from "./roundFinishTracker";
+import { handleFinishCollisions } from "./collisions";
+import { currentSpawnPosition, releasedMarbleDefinition } from "./release";
+import {
+  finishPlacementAt,
+  finishedMarbleDefinition,
+  findOutOfBoundsMarbles,
+  removeFinishedMarbleFor,
+} from "./finishHandling";
 import {
   resolveStableTeamIndices,
   teamIndexForMarble,
@@ -271,13 +272,12 @@ export class RaceController {
   }
 
   private getFinishPlacement(bayIndex: number, slotIndex: number) {
-    const placement =
-      this.finishPlacements[
-        bayIndex * this.configuration.marblesPerTeam + slotIndex
-      ];
-    return placement?.bayIndex === bayIndex && placement.slotIndex === slotIndex
-      ? placement.position
-      : null;
+    return finishPlacementAt(
+      this.finishPlacements,
+      this.configuration.marblesPerTeam,
+      bayIndex,
+      slotIndex
+    );
   }
 
   private freezeIfSingleTeamRemains() {
@@ -303,14 +303,7 @@ export class RaceController {
   }
 
   removeFinishedMarble(stableTeamIndex: number): boolean {
-    for (let index = this.finishMarbles.length - 1; index >= 0; index--) {
-      if (this.finishMarbles[index].stableTeamIndex === stableTeamIndex) {
-        const [removed] = this.finishMarbles.splice(index, 1);
-        removed.entity.delete();
-        return true;
-      }
-    }
-    return false;
+    return removeFinishedMarbleFor(this.finishMarbles, stableTeamIndex);
   }
 
   abandon() {
@@ -338,39 +331,18 @@ export class RaceController {
     this.finishMarbles.push({
       stableTeamIndex,
       entity: this.stage.spawn(
-        marbleDefinition({
+        finishedMarbleDefinition(
           position,
-          radius: this.marbleRadius,
-          color: TEAM_COLORS[stableTeamIndex],
-          team: `${teamIndex + 1}`,
-          tags: ["finished-marble"],
-          physical: false,
-        })
+          teamIndex,
+          stableTeamIndex,
+          this.marbleRadius
+        )
       ),
     });
   }
 
   private collectOutOfBoundsMarbles(): Entity[] {
-    const bounds = this.external?.bounds;
-    if (!bounds) {
-      return [];
-    }
-    const outOfBounds: Entity[] = [];
-    for (const marble of this.raceMarbles) {
-      if (marble.markedForDeletion || !marble.hasTag("released-marble")) {
-        continue;
-      }
-      const [x, y] = marble.position;
-      if (
-        x < bounds.minX ||
-        x > bounds.maxX ||
-        y < bounds.minY ||
-        y > bounds.maxY
-      ) {
-        outOfBounds.push(marble);
-      }
-    }
-    return outOfBounds;
+    return findOutOfBoundsMarbles(this.raceMarbles, this.external?.bounds);
   }
 
   private recordOutOfBoundsMarbles(entities: readonly Entity[]) {
@@ -425,21 +397,6 @@ export class RaceController {
     return this.level.find("spawn-point");
   }
 
-  /** Where marbles emerge right now — tracks an oscillating spawn slider. */
-  private getSpawnPosition(
-    spawnPoint: NonNullable<ReturnType<RaceController["getSpawnPoint"]>>
-  ): [number, number] {
-    if (!spawnPoint.motion) {
-      return [...spawnPoint.transform.position];
-    }
-    const pose = getLevelObjectMotionPose(
-      spawnPoint,
-      this.level.wallThickness,
-      this.motionElapsedMs
-    );
-    return [...pose.position];
-  }
-
   private releaseWave() {
     if (!this.releaseQueue) {
       return false;
@@ -477,74 +434,33 @@ export class RaceController {
     if (!stagedMarble || !spawnPoint) {
       return false;
     }
-
-    const spawnRotation = spawnPoint.transform.rotation ?? 0;
-    const spawnPosition = this.getSpawnPosition(spawnPoint);
-    const angle = randomSpawnAngle(
-      spawnRotation,
-      spawnPoint.properties.directionVariance ??
-        DEFAULT_SPAWN_DIRECTION_VARIANCE
-    );
-    const cosine = Math.cos(spawnRotation);
-    const sine = Math.sin(spawnRotation);
+    const stableTeamIndex = this.stableTeamIndices[stagedMarble.teamIndex];
     const marble = this.stage.spawn(
-      marbleDefinition({
-        position: [
-          spawnPosition[0] + spawnOffset[0] * cosine - spawnOffset[1] * sine,
-          spawnPosition[1] + spawnOffset[0] * sine + spawnOffset[1] * cosine,
-        ],
+      releasedMarbleDefinition({
+        spawnPoint,
+        spawnPosition: currentSpawnPosition(
+          spawnPoint,
+          this.level.wallThickness,
+          this.motionElapsedMs
+        ),
+        spawnOffset,
+        teamIndex: stagedMarble.teamIndex,
+        stableTeamIndex,
         radius: this.marbleRadius,
-        color: TEAM_COLORS[this.stableTeamIndices[stagedMarble.teamIndex]],
-        team: `${stagedMarble.teamIndex + 1}`,
-        tags: ["race-marble", "released-marble"],
-        velocity: [
-          Math.cos(angle) * spawnPoint.properties.launchSpeed,
-          Math.sin(angle) * spawnPoint.properties.launchSpeed,
-        ],
-        restitution: 0.15,
-        friction: 0.55,
       })
     );
     this.raceMarbles.push(marble);
     this.raceMarbleIds.add(marble.id);
     this.releasedMarbles++;
-    this.external?.onMarbleReleased?.(
-      this.stableTeamIndices[stagedMarble.teamIndex]
-    );
+    this.external?.onMarbleReleased?.(stableTeamIndex);
     return true;
   }
 
-  private readonly handleCollisions = ({
-    entityCollisions,
-  }: CollisionEvents) => {
-    for (const { entity1: firstId, entity2: secondId } of entityCollisions) {
-      for (const [marbleId, finishId] of [
-        [firstId, secondId],
-        [secondId, firstId],
-      ]) {
-        if (!this.raceMarbleIds.has(marbleId)) {
-          continue;
-        }
-        const marble = this.stage.world.get(marbleId);
-        const finish = this.stage.world.get(finishId);
-        if (
-          marble?.hasTag("released-marble") &&
-          !marble.markedForDeletion &&
-          finish?.hasTag("finish-zone")
-        ) {
-          const teamIndex = teamIndexForMarble(
-            marble,
-            this.configuration.teamCount
-          );
-          if (teamIndex === null) {
-            continue;
-          }
-          if (this.completeMarble(marble, teamIndex)) {
-            return;
-          }
-          break;
-        }
-      }
-    }
-  };
+  private readonly handleCollisions = (events: CollisionEvents) =>
+    handleFinishCollisions(events, {
+      raceMarbleIds: this.raceMarbleIds,
+      getEntity: (id) => this.stage.world.get(id),
+      teamCount: this.configuration.teamCount,
+      onFinish: (marble, teamIndex) => this.completeMarble(marble, teamIndex),
+    });
 }
