@@ -17,6 +17,17 @@ import {
 } from "../hitTest";
 import type { EditorSession } from "../session";
 
+/**
+ * Refreshes hover state, wall-endpoint feedback, and the cursor from whatever
+ * sits under the pointer while no gesture is running. Handles are tested in
+ * priority order — endpoint, motion range, rotation, resize — before falling
+ * back to picking an object. Returns immediately if a gesture is active.
+ * @param session - the editor session holding selection and gesture state
+ * @param env - editor ports for hit-testing, picking, and setting the cursor
+ * @param screenPoint - the current pointer position in screen space
+ * @param options - `temporarySelection` forces select-mode behaviour while a
+ * creation tool is active, as when the selection modifier is held
+ */
 export function updateIdleState(
   session: EditorSession,
   env: EditorEnv,
@@ -107,6 +118,13 @@ export function updateIdleState(
   env.setCursor(hoveredObject && !session.readOnly ? "grab" : "default");
 }
 
+/**
+ * Sets the cursor from tool, modifier, and gesture state alone. Unlike
+ * `updateIdleState` it does no hit-testing, so it is the cheap call to make
+ * after a state change that cannot alter what is under the pointer.
+ * @param session - the editor session holding tool and gesture state
+ * @param env - editor ports used to set the cursor
+ */
 export function updateCursor(session: EditorSession, env: EditorEnv) {
   if (session.gesture?.kind === "pan") {
     env.setCursor("grabbing");

@@ -5,6 +5,15 @@ import type { EditorGesture } from "../gestures";
 import { updateCursor } from "./idleCursor";
 import type { EditorSession } from "../session";
 
+/**
+ * Undoes the edits a gesture has already applied, restoring the state captured
+ * when it began. Gestures that never changed anything are left alone, and an
+ * insert-drag discards the inserted objects rather than restoring them. Does
+ * not clear the session's active gesture — see `cancelGesture` for that.
+ * @param session - the editor session holding selection and gesture state
+ * @param env - editor ports used to read objects and report changes
+ * @param gesture - the gesture to roll back
+ */
 export function rollbackGesture(
   session: EditorSession,
   env: EditorEnv,
@@ -76,6 +85,13 @@ export function rollbackGesture(
   }
 }
 
+/**
+ * Aborts the active gesture: rolls back its edits, releases pointer capture,
+ * clears gesture and endpoint-feedback state, and refreshes the cursor. Safe to
+ * call when no gesture is active.
+ * @param session - the editor session holding selection and gesture state
+ * @param env - editor ports used to release the pointer and set the cursor
+ */
 export function cancelGesture(session: EditorSession, env: EditorEnv): void {
   if (session.gesture) {
     const gesture = session.gesture;

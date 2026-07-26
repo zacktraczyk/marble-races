@@ -48,6 +48,13 @@ export type EditorEnv = {
   readonly dragDeps: () => DragDepsBase;
 };
 
+/**
+ * Looks up a course object by id, tolerating a null id so callers can pass a
+ * possibly-empty selection straight through.
+ * @param getObjects - accessor for the current course objects
+ * @param id - the object id to find, or null
+ * @returns the matching object, or null when the id is null or unknown
+ */
 export function findLevelObject(
   getObjects: () => readonly LevelObjectData[],
   id: string | null

@@ -27,9 +27,21 @@ import {
 const CLIPBOARD_KEY = "marble:leg-editor-clipboard";
 let memoryClipboard: LevelObjectData[] = [];
 
+/**
+ * Filters a selection down to what may be copied: locked objects and the spawn
+ * point are excluded, since neither can be duplicated onto a course.
+ * @param objects - the objects to filter
+ * @returns the copyable subset, in the original order
+ */
 const copyableObjects = (objects: readonly LevelObjectData[]) =>
   objects.filter((object) => !object.locked && object.prefab !== "spawn-point");
 
+/**
+ * Stores a copyable snapshot of objects in both the in-memory clipboard and
+ * session storage, so a copy survives a page reload. Storage failures are
+ * ignored; the in-memory copy still serves the current session.
+ * @param objects - the objects to place on the clipboard
+ */
 const writeClipboard = (objects: readonly LevelObjectData[]) => {
   memoryClipboard = structuredClone(copyableObjects(objects));
   try {
@@ -42,6 +54,14 @@ const writeClipboard = (objects: readonly LevelObjectData[]) => {
   }
 };
 
+/**
+ * Deep-copies objects for pasting, filling in each wall's thickness from the
+ * course default so a pasted wall keeps its appearance if the default later
+ * changes.
+ * @param env - editor ports, read for the default wall thickness
+ * @param objects - the objects to copy
+ * @returns detached clones safe to insert
+ */
 const clipboardCopies = (env: EditorEnv, objects: readonly LevelObjectData[]) =>
   structuredClone(copyableObjects(objects)).map((object) => {
     if (object.prefab === "wall" && object.properties.thickness === undefined) {
@@ -50,6 +70,12 @@ const clipboardCopies = (env: EditorEnv, objects: readonly LevelObjectData[]) =>
     return object;
   });
 
+/**
+ * Reads the clipboard, preferring the in-memory copy and falling back to
+ * session storage. Unreadable or malformed storage yields an empty clipboard
+ * rather than throwing.
+ * @returns detached clones of the clipboard contents
+ */
 const readClipboard = () => {
   if (memoryClipboard.length > 0) {
     return structuredClone(memoryClipboard);

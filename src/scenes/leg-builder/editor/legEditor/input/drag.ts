@@ -28,6 +28,14 @@ import type { SnapDeps } from "../hitTest";
 import { snapWallEndpoint } from "../hitTest";
 import type { LegEditorSelection } from "../selection";
 
+/**
+ * What one step of a drag decided. Every `update*Drag` function below takes
+ * `(gesture, screenPoint, worldPoint, event, deps)` and answers with one of:
+ * - `pending` — the pointer has not yet moved past the drag threshold, so the
+ *   gesture has not committed to anything and the caller should wait
+ * - `handled` — the step applied its edit
+ * - `cancel` — the gesture cannot continue and should be rolled back
+ */
 export type DragUpdateResult = "pending" | "handled" | "cancel";
 
 export type DragDepsBase = {

@@ -40,6 +40,13 @@ export type HandleTestDeps = {
   cameraZoom: number;
 };
 
+/**
+ * Identifies which of one wall's two endpoints sits under a screen point.
+ * @param deps - hit-test dependencies (screen mapping, object lookup)
+ * @param object - the object to test; non-walls never match
+ * @param screenPoint - the screen-space point to test
+ * @returns `"start"`, `"end"`, or null when neither is within the handle radius
+ */
 export function endpointAt(
   deps: HandleTestDeps,
   object: LevelObjectData,
@@ -60,6 +67,16 @@ export function endpointAt(
   return null;
 }
 
+/**
+ * Finds the nearest wall endpoint to a screen point across every wall on the
+ * course, unlike `endpointAt` which tests a single object.
+ * @param deps - hit-test dependencies (screen mapping, object lookup)
+ * @param screenPoint - the screen-space point to search around
+ * @param maximumDistance - search radius in screen units
+ * @param options - `selectableOnly` skips locked walls; `exclude` omits one
+ * endpoint, so a dragged endpoint does not snap to itself
+ * @returns the nearest matching endpoint, or null when none is in range
+ */
 export function findWallEndpointTarget(
   deps: HandleTestDeps,
   screenPoint: Vec2,
@@ -97,6 +114,13 @@ export function findWallEndpointTarget(
   return nearestIndex === null ? null : candidates[nearestIndex];
 }
 
+/**
+ * Identifies which resize anchor of an object sits under a screen point.
+ * @param deps - hit-test dependencies (screen mapping, wall thickness)
+ * @param object - the object to test; non-resizable objects never match
+ * @param screenPoint - the screen-space point to test
+ * @returns the matching resize handle, or null when none is in range
+ */
 export function resizeHandleAt(
   deps: HandleTestDeps,
   object: LevelObjectData,
@@ -115,6 +139,15 @@ export function resizeHandleAt(
   return null;
 }
 
+/**
+ * Tests whether an object's rotation handle sits under a screen point. The
+ * handle's offset is divided by the camera zoom so it stays a fixed distance
+ * away on screen at any zoom level.
+ * @param deps - hit-test dependencies (screen mapping, camera zoom)
+ * @param object - the object to test; non-rotatable objects never match
+ * @param screenPoint - the screen-space point to test
+ * @returns true when the handle is within the handle radius
+ */
 export function rotationHandleAt(
   deps: HandleTestDeps,
   object: LevelObjectData,
@@ -135,6 +168,15 @@ export function rotationHandleAt(
   );
 }
 
+/**
+ * Tests whether an oscillating object's far travel-range handle sits under a
+ * screen point. Uses a slightly larger radius than the other handles because it
+ * can overlap the object's own outline.
+ * @param deps - hit-test dependencies (screen mapping, wall thickness)
+ * @param object - the object to test; only `oscillate` motion has this handle
+ * @param screenPoint - the screen-space point to test
+ * @returns true when the handle is within range
+ */
 export function motionRangeHandleAt(
   deps: HandleTestDeps,
   object: LevelObjectData,

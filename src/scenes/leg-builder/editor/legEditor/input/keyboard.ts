@@ -21,6 +21,12 @@ export type LegEditorKeyboardActions = {
   blur(): void;
 };
 
+/**
+ * Reports whether an event target is an interactive control that owns its own
+ * keyboard behaviour, so editor shortcuts should not steal the key.
+ * @param target - the event target to test
+ * @returns true for focusable controls and contenteditable elements
+ */
 const isKeyboardControlTarget = (
   target: EventTarget | null
 ): target is HTMLElement =>
@@ -30,12 +36,23 @@ const isKeyboardControlTarget = (
       'button, a[href], input, textarea, select, summary, [role="button"], [role="menuitem"]'
     ));
 
+/**
+ * Reports whether an event target accepts typed text. Narrower than
+ * `isKeyboardControlTarget`: a button is a control but not a text field.
+ * @param target - the event target to test
+ * @returns true for inputs, textareas, selects, and contenteditable elements
+ */
 const isTextEditingTarget = (
   target: EventTarget | null
 ): target is HTMLElement =>
   target instanceof HTMLElement &&
   (target.isContentEditable || target.matches("input, textarea, select"));
 
+/**
+ * Blurs an interactive control so a subsequent editor shortcut is not consumed
+ * by it. Non-control targets are left focused.
+ * @param target - the event target to blur when it is a control
+ */
 const releaseKeyboardControlFocus = (target: EventTarget | null) => {
   if (isKeyboardControlTarget(target)) {
     target.blur();
