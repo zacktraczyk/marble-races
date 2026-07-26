@@ -1,4 +1,4 @@
 export * from "./defaults";
-export * from "./eraSchedule";
 export * from "./repository";
+export * from "./schedule";
 export * from "./types";

@@ -6,7 +6,7 @@ import {
   isRacePlayable,
   type RaceDocument,
 } from "@races/types";
-import { legScheduleInputs } from "@races/eraSchedule";
+import { legScheduleInputs } from "@races/schedule";
 import {
   MAX_MARBLE_RADIUS,
   MIN_MARBLE_RADIUS,
