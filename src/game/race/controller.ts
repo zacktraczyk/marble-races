@@ -1,6 +1,6 @@
 import type { Entity, EntityId } from "@engine/core/entity";
+import type { EntityDefinition } from "@engine/stage";
 import type { CollisionEvents } from "@engine/physics/physics";
-import type Stage from "@engine/stage";
 import { marbleDefinition } from "../prefabs/marble";
 import {
   createPackedFinishLayout,
@@ -41,6 +41,25 @@ export type {
   RaceSnapshot,
 } from "./types";
 
+/**
+ * The slice of the engine stage a race actually drives. Declared structurally
+ * rather than as the concrete `Stage` so this layer depends on the capabilities
+ * it uses instead of on the engine's composition root — the same shape as the
+ * leg editor's `EditorEnv` and `*Deps` ports. A real `Stage` satisfies it as-is.
+ */
+export type RaceStage = {
+  physicsEnabled: boolean;
+  readonly world: {
+    get(id: EntityId): Entity | undefined;
+    flushDestruction(): void;
+  };
+  spawn(definition: EntityDefinition): Entity;
+  update(elapsed: number): void;
+  clearOutOfBoundsEntities(outOfBoundsPadding?: number): Entity[];
+  registerPhysicsObserver(observer: (data: CollisionEvents) => void): void;
+  unregisterPhysicsObserver(observer: (data: CollisionEvents) => void): void;
+};
+
 export class RaceController {
   private configuration: RoundConfiguration;
   private stableTeamIndices: number[];
@@ -61,7 +80,7 @@ export class RaceController {
   private readonly external: ExternalRaceMode | undefined;
 
   constructor(
-    private readonly stage: Stage,
+    private readonly stage: RaceStage,
     private readonly level: AuthoredLevel,
     configuration: RoundConfiguration,
     { stableTeamIndices, external }: RaceControllerOptions = {}
