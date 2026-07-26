@@ -3,7 +3,7 @@ import {
   type Collision,
   type ContactManifold,
   type NarrowPhase,
-} from "@engine/physics/collision/types";
+} from "@engine/physics/collision";
 import { Observer } from "@engine/utils/observer";
 import type { PhysicsEntity } from "@engine/physics/entity";
 
