@@ -6,7 +6,7 @@ import {
   updateMoveDrag,
   updateWallDrag,
 } from "../src/scenes/leg-builder/editor/legEditor/input/drag.ts";
-import { handlePointerUp } from "../src/scenes/leg-builder/editor/legEditor/input/index.ts";
+import { handlePointerUp } from "../src/scenes/leg-builder/editor/legEditor/input/gestureUpdate.ts";
 import { LegEditorSelection } from "../src/scenes/leg-builder/editor/legEditor/selection.ts";
 
 const bounds = { min: [-705, -390], max: [705, 270] };

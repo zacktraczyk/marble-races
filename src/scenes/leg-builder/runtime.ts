@@ -1,5 +1,6 @@
 import type { Vec2 } from "@engine/core/transform";
-import { EditorOverlay, LegEditorController } from "./editor/legEditor";
+import { LegEditorController } from "./editor/legEditor";
+import { EditorOverlay } from "./editor/legEditor/view";
 import { LegHistory } from "./editor/legHistory";
 import type {
   LevelObjectData,

@@ -9,7 +9,8 @@ import {
 import { moveShape } from "../geometry";
 import { SelectedTool } from "../tools";
 import type { EditorEnv } from "./env";
-import { cancelGesture, updateCursor } from "./input";
+import { updateCursor } from "./input/idleCursor";
+import { cancelGesture } from "./input/rollback";
 import type { EditorSession } from "./session";
 import {
   alignLevelObjects,
