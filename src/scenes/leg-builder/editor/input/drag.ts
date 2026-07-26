@@ -15,7 +15,7 @@ import {
   moveShape,
   resizeShape,
   rotateShape,
-} from "../../geometry";
+} from "../geometry";
 import { oscillationPeriodForRange } from "@game/level/motion";
 import {
   DRAG_THRESHOLD,

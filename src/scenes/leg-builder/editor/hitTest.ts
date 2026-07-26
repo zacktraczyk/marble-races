@@ -14,7 +14,7 @@ import {
   getResizeAnchors,
   constrainPointToAngle,
   type ResizeHandle,
-} from "../geometry";
+} from "./geometry";
 import type { WallEndpointFeedback } from "./gestures";
 import {
   ENDPOINT_SNAP_RADIUS,

@@ -1,11 +1,11 @@
 import { describe, expect, test } from "bun:test";
 import { createGridLayout } from "../src/game/level/grid.ts";
 import { constrainPointToAngle } from "../src/scenes/leg-builder/editor/geometry.ts";
-import { ROTATION_SNAP_STEP } from "../src/scenes/leg-builder/editor/legEditor/constants.ts";
+import { ROTATION_SNAP_STEP } from "../src/scenes/leg-builder/editor/constants.ts";
 import {
   snapPlacementPoint,
   snapWallEndpoint,
-} from "../src/scenes/leg-builder/editor/legEditor/hitTest.ts";
+} from "../src/scenes/leg-builder/editor/hitTest.ts";
 
 const bounds = { min: [-705, -390], max: [705, 270] };
 const gridLayout = createGridLayout(bounds);

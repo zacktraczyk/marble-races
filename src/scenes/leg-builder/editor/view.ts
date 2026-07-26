@@ -15,7 +15,7 @@ import {
   type LevelObjectShape,
   type RectangleLevelShape,
 } from "@game/level/geometry";
-import { getRotationHandle, getResizeAnchors } from "../geometry";
+import { getRotationHandle, getResizeAnchors } from "./geometry";
 import { getSelectionBounds } from "./selection";
 import type {
   SelectionMarquee,

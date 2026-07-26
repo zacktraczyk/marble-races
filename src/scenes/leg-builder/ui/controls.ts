@@ -1,12 +1,9 @@
 import type { SliderRepeat, SpawnPointVariant } from "@game/level/document";
 import type { PusherSpeed } from "@game/level/objects";
-import { isPusherTool, SelectedTool } from "../editor/tools";
+import { isPusherTool, SelectedTool } from "../tools";
 import type { BuilderUi } from ".";
 import type { Vec2 } from "@engine/core/transform";
-import type {
-  EditorContextAction,
-  EditorContextState,
-} from "../editor/legEditor";
+import type { EditorContextAction, EditorContextState } from "../editor";
 
 export type BuilderControlActions = {
   selectTool(tool: SelectedTool): void;

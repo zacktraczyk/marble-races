@@ -4,7 +4,7 @@ import {
   pickLevelObject,
   pickTolerance,
   resizeHandleCursor,
-} from "../../geometry";
+} from "../geometry";
 import { SelectedTool } from "../../tools";
 import { HANDLE_HIT_RADIUS } from "../constants";
 import type { EditorEnv } from "../env";

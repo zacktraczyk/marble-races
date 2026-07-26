@@ -46,7 +46,7 @@ import {
   applyLevelObjectShape,
   type LevelObjectShape,
 } from "@game/level/geometry";
-import { pickLevelObject, pickTolerance } from "../geometry";
+import { pickLevelObject, pickTolerance } from "./geometry";
 import type {
   SelectionAlignment,
   SelectionDistribution,

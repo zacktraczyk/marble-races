@@ -4,10 +4,7 @@ import type { Vec2 } from "@engine/core/transform";
 import type Stage from "@engine/stage";
 import type { BuilderUi } from ".";
 import type { LevelObjectData } from "@game/level/document";
-import {
-  getSelectionBounds,
-  selectionCenter,
-} from "../editor/legEditor/selection";
+import { getSelectionBounds, selectionCenter } from "../editor/selection";
 import { calculateCameraFitForRect } from "@engine/camera/fit";
 
 const MIN_ZOOM = 0.1;

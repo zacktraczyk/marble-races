@@ -6,7 +6,7 @@ import {
   getWallEndpoints,
   setWallEndpoints,
 } from "@game/level/geometry";
-import { moveShape } from "../geometry";
+import { moveShape } from "./geometry";
 import { SelectedTool } from "../tools";
 import type { EditorEnv } from "./env";
 import { updateCursor } from "./input/idleCursor";

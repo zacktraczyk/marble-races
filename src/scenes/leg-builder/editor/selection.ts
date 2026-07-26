@@ -6,7 +6,7 @@ import {
   getLevelObjectShape,
   type Bounds,
 } from "@game/level/geometry";
-import { moveShape, rotateShape } from "../geometry";
+import { moveShape, rotateShape } from "./geometry";
 
 /** Owns selection and hover identity independently from gesture handling. */
 export class LegEditorSelection {

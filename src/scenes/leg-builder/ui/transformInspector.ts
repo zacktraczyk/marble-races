@@ -1,6 +1,6 @@
-import type { LegEditorController } from "../editor/legEditor";
-import type { EditorContextAction } from "../editor/legEditor";
-import { MIN_OBJECT_SIZE } from "../editor/legEditor/constants";
+import type { LegEditorController } from "../editor";
+import type { EditorContextAction } from "../editor";
+import { MIN_OBJECT_SIZE } from "../editor/constants";
 import {
   getLevelObjectShape,
   getWallThickness,

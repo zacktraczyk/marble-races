@@ -1,5 +1,5 @@
 import { getLevelObjectShape } from "@game/level/geometry";
-import type { LegEditorController } from "../editor/legEditor";
+import type { LegEditorController } from "../editor";
 import type {
   LevelObjectData,
   LevelObjectMotion,

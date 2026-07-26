@@ -1,13 +1,13 @@
 import { describe, expect, test } from "bun:test";
 import { createGridLayout } from "../src/game/level/grid.ts";
-import { DRAG_THRESHOLD } from "../src/scenes/leg-builder/editor/legEditor/constants.ts";
+import { DRAG_THRESHOLD } from "../src/scenes/leg-builder/editor/constants.ts";
 import {
   updateMarqueeDrag,
   updateMoveDrag,
   updateWallDrag,
-} from "../src/scenes/leg-builder/editor/legEditor/input/drag.ts";
-import { handlePointerUp } from "../src/scenes/leg-builder/editor/legEditor/input/gestureUpdate.ts";
-import { LegEditorSelection } from "../src/scenes/leg-builder/editor/legEditor/selection.ts";
+} from "../src/scenes/leg-builder/editor/input/drag.ts";
+import { handlePointerUp } from "../src/scenes/leg-builder/editor/input/gestureUpdate.ts";
+import { LegEditorSelection } from "../src/scenes/leg-builder/editor/selection.ts";
 
 const bounds = { min: [-705, -390], max: [705, 270] };
 const gridLayout = createGridLayout(bounds);

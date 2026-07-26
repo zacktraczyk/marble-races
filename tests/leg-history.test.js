@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { LegHistory } from "../src/scenes/leg-builder/editor/legHistory.ts";
+import { LegHistory } from "../src/scenes/leg-builder/legHistory.ts";
 
 const level = (name, wallThickness = 25) => ({
   version: 3,
