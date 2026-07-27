@@ -147,7 +147,7 @@ import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
   <Tooltip />
 
   <!-- The whole card is one link to the race's pre-launch screen. The
-       hover-revealed actions overlay is a sibling of the link so the
+       always-visible actions overlay is a sibling of the link so the
        buttons aren't nested inside it. -->
   <template id="tile">
     <div class="group/tile relative">
@@ -218,7 +218,7 @@ import ConfirmDeleteDialog from "@ui/ConfirmDeleteDialog.astro";
         </div>
       </a>
       <div
-        class="absolute top-5 right-6 flex gap-1.5 opacity-0 transition-opacity duration-100 ease-out group-hover/tile:opacity-100 group-focus-within/tile:opacity-100"
+        class="absolute top-5 right-6 flex gap-1.5"
       >
         <button
           type="button"
